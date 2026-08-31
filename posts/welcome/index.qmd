@@ -1,0 +1,16 @@
+---
+title: "Hello from PeteMart"
+description: "Why we're making a tiny family website."
+author: "Peter and Marta"
+date: "2026-08-31"
+categories: [family, beginnings]
+draft: true
+---
+
+Welcome to PeteMart.
+
+We wanted a place that belonged to us: part notebook, part family scrapbook,
+and part playground for things we make.
+
+This post is still a draft. Remove `draft: true` above when it's ready to
+publish.

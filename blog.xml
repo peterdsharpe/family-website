@@ -5,11 +5,11 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>PeteMart</title>
-<link>https://petem.art/</link>
-<atom:link href="https://petem.art/index.xml" rel="self" type="application/rss+xml"/>
-<description>A little family website by Peter and Marta.</description>
+<title>The PeteMart Journal</title>
+<link>https://petem.art/blog.html</link>
+<atom:link href="https://petem.art/blog.xml" rel="self" type="application/rss+xml"/>
+<description>Notes, projects, field reports, and other things Peter and Marta want to remember.</description>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Mon, 31 Aug 2026 21:32:19 GMT</lastBuildDate>
+<lastBuildDate>Fri, 11 Sep 2026 20:23:55 GMT</lastBuildDate>
 </channel>
 </rss>

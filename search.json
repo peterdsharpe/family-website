@@ -1,16 +1,37 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PeteMart",
-    "section": "",
-    "text": "Hi! We’re Peter and Marta—PeteMart to our friends.\nThis is our little corner of the internet for projects, travels, experiments, recipes, and things we’d like to remember.\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Hello, we’re PeteMart.",
     "section": "",
-    "text": "We’re Peter and Marta, often known together as PeteMart.\nThis site is a shared home for things we make, learn, and want to remember."
+    "text": "We’re Peter and Marta, often known together as PeteMart. This is our shared home on the web for things we make, learn, and want to remember."
+  },
+  {
+    "objectID": "about.html#why-make-a-family-website",
+    "href": "about.html#why-make-a-family-website",
+    "title": "Hello, we’re PeteMart.",
+    "section": "Why make a family website?",
+    "text": "Why make a family website?\nBecause the nicest parts of the internet still feel handmade.\nWe wanted something more lasting than a social feed and less formal than a portfolio: a place where a technical deep dive can sit beside a trip report, a favorite recipe, or a tiny project that made us smile.\n\n\nThink of it as a kitchen table with unusually good support for equations and source code."
+  },
+  {
+    "objectID": "about.html#what-youll-find-here",
+    "href": "about.html#what-youll-find-here",
+    "title": "Hello, we’re PeteMart.",
+    "section": "What you’ll find here",
+    "text": "What you’ll find here\n\n\nIdeas Notes, explanations, reading, and things we’re still figuring out.\n\n\nPlaces Travels, meals, photographs, and details worth keeping.\n\n\nProjects Experiments, tools, code, and other evidence of curiosity getting out of hand.\n\n\nThe site will grow as we do. For now, you can wander through the journal or check back when the next small wonder arrives."
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Journal",
+    "section": "",
+    "text": "Part laboratory notebook, part family scrapbook. Search the whole site from the navigation bar, or use the filters below to explore the journal.\n\n\n  ✦\n  The shelves are ready.\n  Our first public entry is still being polished. Soon this will fill up with notes, projects, places, and other things worth keeping.\n\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nNo matching items\n Back to top"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PeteMart · Peter & Marta’s little corner of the internet",
+    "section": "",
+    "text": "Peter + Marta / PeteMart\n    Our little cornerof the internet.\n    A shared notebook for things we make, learn, notice, and want to remember.\n    \n      Read the journal ↗\n      Meet PeteMart\n    \n    ✦ Experiments, field notes, code, recipes, and the occasional beautiful graph.\n  \n\n  \n    \n      \n      \n        P&M\n      \n       collecting small wonders\n    \n    move your pointer through our orbit\n  \n\n\n\n  NOTES✦CODE✦PLACES✦RECIPES✦PROJECTS\n\n\n\n  01\n  \n    A shared notebook\n    A small site withroom to grow.\n  \n  \n    We wanted a place on the web that felt like ours: part laboratory notebook, part family scrapbook, and part playground.\n    Some entries may have equations and Python; others may just have a good meal or a place worth returning to. That mix is the point.\n  \n\n\n\n  \n    What lives here\n    Three drawers in the cabinet.\n  \n  \n    \n      01 / Notebook↗\n      Σ\n      Notes & ideas\n      Essays, useful explanations, equations, code, and figures—kept readable enough to revisit later.\n      Browse the journal →\n    \n    \n      02 / Field notes↗\n      ⌖\n      Places & moments\n      Trips, meals, traditions, and little details that deserve somewhere better than a camera roll.\n      See what turns up →\n    \n    \n      03 / Workshop↗\n      ✣\n      Things we make\n      Small tools, ambitious experiments, odd side projects, and whatever else escapes the workbench.\n      Open the workshop →\n    \n  \n\n\n\n  \n    The PeteMart journal\n    Serious enough for math.Human enough for everything else.\n  \n  \n    Posts are searchable, organized by topic, and built to handle LaTeX, highlighted code, interactive widgets, and computed Python output without turning the whole site into a slow web app.\n    Go to the journal →\n  \n\n\n\n\n\n\n Back to top"
   }
 ]

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://petem.art/index.html</loc>
-    <lastmod>2026-08-31T21:24:49.748Z</lastmod>
+    <loc>https://petem.art/about.html</loc>
+    <lastmod>2026-09-11T20:22:27.525Z</lastmod>
   </url>
   <url>
-    <loc>https://petem.art/about.html</loc>
-    <lastmod>2026-08-31T21:24:49.752Z</lastmod>
+    <loc>https://petem.art/blog.html</loc>
+    <lastmod>2026-09-11T20:06:59.233Z</lastmod>
+  </url>
+  <url>
+    <loc>https://petem.art/index.html</loc>
+    <lastmod>2026-09-11T20:06:59.230Z</lastmod>
   </url>
 </urlset>

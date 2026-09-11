@@ -3,6 +3,7 @@ project:
   resources:
     - assets
     - CNAME
+    - .nojekyll
   brand: _brand.yml
 
 website:

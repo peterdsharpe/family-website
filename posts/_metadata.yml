@@ -1,8 +1,15 @@
-# options specified here will apply to all posts in this folder
+# Options here apply to every journal entry.
 
-# freeze computational output
-# (see https://quarto.org/docs/projects/code-execution.html#freeze)
+# Render computational posts explicitly, then commit their frozen outputs. This
+# keeps normal site builds fast and reproducible without rerunning notebooks.
 freeze: true
 
-# Enable banner style title blocks
-title-block-banner: true
+# Scientific-writing defaults. MathJax support is built into Quarto HTML.
+toc: true
+toc-depth: 3
+title-block-banner: false
+code-fold: true
+code-summary: "Show the code"
+code-copy: hover
+code-overflow: wrap
+fig-cap-location: bottom

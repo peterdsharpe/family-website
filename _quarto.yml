@@ -1,21 +1,52 @@
 project:
   type: website
+  resources:
+    - assets
+    - CNAME
+  brand: _brand.yml
 
 website:
   title: "PeteMart"
   site-url: https://petem.art
-  description: "A little family website by Peter and Marta."
+  description: "A shared notebook, scrapbook, and playground by Peter and Marta."
+  favicon: assets/favicon.svg
+  open-graph: true
+  twitter-card: true
+  back-to-top-navigation: true
+  search:
+    location: navbar
+    type: overlay
+    limit: 20
   navbar:
+    pinned: true
+    background: transparent
     left:
       - href: index.qmd
         text: Home
+      - href: blog.qmd
+        text: Journal
       - href: about.qmd
         text: About
     right:
       - icon: rss
-        href: index.xml
+        href: blog.xml
+        aria-label: RSS feed
+  page-footer:
+    border: false
+    left: "Made by Peter & Marta—somewhere between a notebook and a scrapbook."
+    right:
+      - text: Journal
+        href: blog.qmd
+      - icon: rss
+        href: blog.xml
+        aria-label: RSS feed
 
 format:
   html:
-    theme: cosmo
+    theme: default
     css: styles.css
+    code-copy: hover
+    code-overflow: wrap
+    smooth-scroll: true
+    anchor-sections: true
+    respect-user-color-scheme: true

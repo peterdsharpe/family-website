@@ -1,7 +1,41 @@
 ---
-title: "About"
+title: "Hello, we're PeteMart."
+description: "About Peter, Marta, and this small shared corner of the internet."
+page-layout: article
+body-classes: about-page
 ---
 
-We're Peter and Marta, often known together as PeteMart.
+::: {.about-lede}
+We're Peter and Marta, often known together as **PeteMart**. This is our shared home on the web for things we make, learn, and want to remember.
+:::
 
-This site is a shared home for things we make, learn, and want to remember.
+## Why make a family website?
+
+Because the nicest parts of the internet still feel handmade.
+
+We wanted something more lasting than a social feed and less formal than a portfolio: a place where a technical deep dive can sit beside a trip report, a favorite recipe, or a tiny project that made us smile.
+
+::: {.about-aside}
+> Think of it as a kitchen table with unusually good support for equations and source code.
+:::
+
+## What you'll find here
+
+::: {.about-list}
+::: {.about-list-item}
+**Ideas**<br>
+Notes, explanations, reading, and things we're still figuring out.
+:::
+
+::: {.about-list-item}
+**Places**<br>
+Travels, meals, photographs, and details worth keeping.
+:::
+
+::: {.about-list-item}
+**Projects**<br>
+Experiments, tools, code, and other evidence of curiosity getting out of hand.
+:::
+:::
+
+The site will grow as we do. For now, you can [wander through the journal](blog.qmd) or check back when the next small wonder arrives.

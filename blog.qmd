@@ -1,0 +1,30 @@
+---
+title: "Journal"
+description: "Notes, projects, field reports, and other things Peter and Marta want to remember."
+page-layout: full
+body-classes: journal-page
+listing:
+  contents: posts
+  type: grid
+  sort: "date desc"
+  categories: true
+  filter-ui: true
+  sort-ui: true
+  page-size: 12
+  feed:
+    type: full
+    title: "The PeteMart Journal"
+---
+
+::: {.journal-deck}
+Part laboratory notebook, part family scrapbook. Search the whole site from the navigation bar, or use the filters below to explore the journal.
+:::
+
+```{=html}
+<div class="journal-empty-state" data-journal-empty hidden>
+  <span aria-hidden="true">✦</span>
+  <h2>The shelves are ready.</h2>
+  <p>Our first public entry is still being polished. Soon this will fill up with notes, projects, places, and other things worth keeping.</p>
+</div>
+<script src="assets/journal.js" defer></script>
+```

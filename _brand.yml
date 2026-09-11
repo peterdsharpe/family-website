@@ -1,0 +1,37 @@
+color:
+  palette:
+    ink: "#18223a"
+    cream: "#fbf7ef"
+    coral: "#b94739"
+    blue: "#315eaa"
+    gold: "#a86f05"
+    night: "#101522"
+    moon: "#eef1f7"
+  foreground:
+    light: "#18223a"
+    dark: "#eef1f7"
+  background:
+    light: "#fbf7ef"
+    dark: "#101522"
+  primary:
+    light: "#b94739"
+    dark: "#ff9b8e"
+  secondary:
+    light: "#315eaa"
+    dark: "#91b7ff"
+  link:
+    light: "#9d382e"
+    dark: "#ffac9f"
+
+typography:
+  base:
+    family: system-ui
+    size: 1rem
+    line-height: 1.7
+  headings:
+    family: Georgia
+    weight: 600
+    line-height: 1.08
+  monospace:
+    family: ui-monospace
+    size: 0.92em

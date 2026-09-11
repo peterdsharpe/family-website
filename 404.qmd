@@ -1,0 +1,16 @@
+---
+title: "Lost in orbit · PeteMart"
+page-layout: full
+toc: false
+body-classes: not-found-page
+---
+
+```{=html}
+<section class="not-found" aria-labelledby="not-found-title">
+  <p class="eyebrow">404 / Lost in orbit</p>
+  <div class="not-found-mark" aria-hidden="true"><span>P</span><i>&amp;</i><span>M</span></div>
+  <h1 id="not-found-title">Nothing landed here.</h1>
+  <p>The page may have moved, or perhaps it never existed outside your imagination.</p>
+  <a class="pm-button pm-button-primary" href="/">Return home <span aria-hidden="true">→</span></a>
+</section>
+```

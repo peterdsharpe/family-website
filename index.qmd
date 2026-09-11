@@ -1,19 +1,92 @@
 ---
-title: "PeteMart"
-subtitle: "Things Peter and Marta make, learn, and love."
-listing:
-  contents: posts
-  feed: true
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
+title: "PeteMart · Peter & Marta's little corner of the internet"
+description: "A shared notebook, scrapbook, and playground by Peter and Marta."
 page-layout: full
-title-block-banner: true
+toc: false
+body-classes: home-page
 ---
 
-Hi! We're Peter and Marta---PeteMart to our friends.
+```{=html}
+<section class="home-hero" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Peter + Marta <span aria-hidden="true">/</span> PeteMart</p>
+    <h1 id="hero-title">Our little corner<br><em>of the internet.</em></h1>
+    <p class="hero-lede">A shared notebook for things we make, learn, notice, and want to remember.</p>
+    <div class="hero-actions">
+      <a class="pm-button pm-button-primary" href="blog.html">Read the journal <span aria-hidden="true">↗</span></a>
+      <a class="pm-button pm-button-quiet" href="about.html">Meet PeteMart</a>
+    </div>
+    <p class="hero-footnote"><span aria-hidden="true">✦</span> Experiments, field notes, code, recipes, and the occasional beautiful graph.</p>
+  </div>
 
-This is our little corner of the internet for projects, travels, experiments,
-recipes, and things we'd like to remember.
+  <div class="orbit-wrap">
+    <div class="orbit-stage" data-orbit-stage role="img" aria-label="An animated orbital sketch representing Peter and Marta sharing ideas and adventures.">
+      <canvas id="petem-orbit" aria-hidden="true"></canvas>
+      <div class="orbit-monogram" aria-hidden="true">
+        <span>P</span><i>&amp;</i><span>M</span>
+      </div>
+      <p class="orbit-caption"><span class="live-dot" aria-hidden="true"></span> collecting small wonders</p>
+    </div>
+    <p class="orbit-hint" aria-hidden="true">move your pointer through our orbit</p>
+  </div>
+</section>
+
+<div class="signal-strip" aria-label="Things you may find here">
+  <div><span>NOTES</span><i>✦</i><span>CODE</span><i>✦</i><span>PLACES</span><i>✦</i><span>RECIPES</span><i>✦</i><span>PROJECTS</span></div>
+</div>
+
+<section class="home-section home-intro" aria-labelledby="room-to-grow">
+  <div class="section-marker" aria-hidden="true">01</div>
+  <div class="section-heading">
+    <p class="eyebrow">A shared notebook</p>
+    <h2 id="room-to-grow">A small site with<br>room to grow.</h2>
+  </div>
+  <div class="section-copy">
+    <p>We wanted a place on the web that felt like ours: part laboratory notebook, part family scrapbook, and part playground.</p>
+    <p>Some entries may have equations and Python; others may just have a good meal or a place worth returning to. That mix is the point.</p>
+  </div>
+</section>
+
+<section class="home-section" aria-labelledby="what-lives-here">
+  <div class="cards-heading">
+    <p class="eyebrow">What lives here</p>
+    <h2 id="what-lives-here">Three drawers in the cabinet.</h2>
+  </div>
+  <div class="home-card-grid">
+    <article class="home-card card-coral">
+      <div class="card-topline"><span>01 / Notebook</span><span aria-hidden="true">↗</span></div>
+      <div class="card-glyph" aria-hidden="true">Σ</div>
+      <h3>Notes &amp; ideas</h3>
+      <p>Essays, useful explanations, equations, code, and figures—kept readable enough to revisit later.</p>
+      <a href="blog.html">Browse the journal <span aria-hidden="true">→</span></a>
+    </article>
+    <article class="home-card card-blue">
+      <div class="card-topline"><span>02 / Field notes</span><span aria-hidden="true">↗</span></div>
+      <div class="card-glyph" aria-hidden="true">⌖</div>
+      <h3>Places &amp; moments</h3>
+      <p>Trips, meals, traditions, and little details that deserve somewhere better than a camera roll.</p>
+      <a href="blog.html">See what turns up <span aria-hidden="true">→</span></a>
+    </article>
+    <article class="home-card card-gold">
+      <div class="card-topline"><span>03 / Workshop</span><span aria-hidden="true">↗</span></div>
+      <div class="card-glyph" aria-hidden="true">✣</div>
+      <h3>Things we make</h3>
+      <p>Small tools, ambitious experiments, odd side projects, and whatever else escapes the workbench.</p>
+      <a href="blog.html">Open the workshop <span aria-hidden="true">→</span></a>
+    </article>
+  </div>
+</section>
+
+<section class="home-section journal-callout" aria-labelledby="journal-callout-title">
+  <div>
+    <p class="eyebrow">The PeteMart journal</p>
+    <h2 id="journal-callout-title">Serious enough for math.<br>Human enough for everything else.</h2>
+  </div>
+  <div class="journal-callout-copy">
+    <p>Posts are searchable, organized by topic, and built to handle LaTeX, highlighted code, interactive widgets, and computed Python output without turning the whole site into a slow web app.</p>
+    <a class="pm-button pm-button-light" href="blog.html">Go to the journal <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<script src="assets/orbit.js" defer></script>
+```

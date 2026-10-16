@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Notes, projects, field reports, and other things Peter and Marta want to remember.">
+<meta name="description" content="Posts by Peter and Marta, newest first.">
 
 <title>Journal – PeteMart</title>
 <style>
@@ -27,10 +27,12 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -45,29 +47,29 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-a7839532554a418fc012a4bf670039b2.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b35273813a1717d90455fb5bc6f2ba23.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-a7839532554a418fc012a4bf670039b2.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-71426717a3915a2937ce73dc8a615a8a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-9f805cb90af97bc832013c2a6617ec76.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-71426717a3915a2937ce73dc8a615a8a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0460da75a2ec38366db692ca56f23263.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-0a0b8738eceae97abfb05c3951af7b16.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-0460da75a2ec38366db692ca56f23263.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ed4e2f629682e55c33bf33f2f70d281f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-aa0e84848e80d4a43ead816e350bd45a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-ed4e2f629682e55c33bf33f2f70d281f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
+    "search-no-results-text": "Nothing found",
+    "search-matching-documents-text": "found",
     "search-copy-link-title": "Copy link to search",
     "search-hide-matches-text": "Hide additional matches",
     "search-more-match-text": "more match in this document",
@@ -82,20 +84,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-posts .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-language','listing-format','listing-engines','listing-freeze','listing-template-partials','listing-filters','listing-toc','listing-toc-depth','listing-toc-title','listing-reference-location','listing-citation-location','listing-code-fold','listing-code-summary','listing-fig-cap-location','listing-callout-icon','listing-title','listing-description','listing-author','listing-date','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-categories"],
+      searchColumns: ["listing-project","listing-website","listing-language","listing-format","listing-engines","listing-freeze","listing-template-partials","listing-filters","listing-toc","listing-toc-depth","listing-toc-title","listing-reference-location","listing-citation-location","listing-code-fold","listing-code-summary","listing-fig-cap-location","listing-callout-icon","listing-title","listing-description","listing-author","listing-date","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-posts'] = new List('listing-posts', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -108,48 +110,25 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
-<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preload" href="./site_libs/bootstrap/theme/fonts/alegreya-roman.woff2" as="font" type="font/woff2" crossorigin="">
+<meta name="theme-color" content="#f7f2e8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b1915" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="The PeteMart Journal" href="blog.xml" data-external="1"><meta property="og:title" content="Journal – PeteMart">
-<meta property="og:description" content="Notes, projects, field reports, and other things Peter and Marta want to remember.">
+<link rel="alternate" type="application/rss+xml" title="PeteMart" href="blog.xml" data-external="1"><meta property="og:title" content="Journal – PeteMart">
+<meta property="og:description" content="Posts by Peter and Marta, newest first.">
+<meta property="og:image" content="https://petem.art/assets/goose-card.jpg">
 <meta property="og:site_name" content="PeteMart">
+<meta property="og:image:alt" content="A watercolor of a Canada goose in a meadow, painted by Peter.">
 <meta name="twitter:title" content="Journal – PeteMart">
-<meta name="twitter:description" content="Notes, projects, field reports, and other things Peter and Marta want to remember.">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:description" content="Posts by Peter and Marta, newest first.">
+<meta name="twitter:image" content="https://petem.art/assets/goose-card.jpg">
+<meta name="twitter:image:alt" content="A watercolor of a Canada goose in a meadow, painted by Peter.">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed journal-page quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -324,23 +303,14 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">PeteMart</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
+          <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./blog.html" aria-current="page"> 
 <span class="menu-text">Journal</span></a>
@@ -350,80 +320,75 @@ window.Quarto = {
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="./blog.xml"> <i class="bi bi-rss" role="img" aria-label="RSS feed">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Journal</h1>
-</div>
-
-<div>
-  <div class="description">
-    Notes, projects, field reports, and other things Peter and Marta want to remember.
-  </div>
-</div>
-
-
-<div class="quarto-title-meta column-page-left">
-
-    
-  
-    
-  </div>
-  
-
+<header id="title-block-header">
+<h1 class="title display-7">Journal</h1>
 
 </header>
 
 
-<div class="journal-deck">
-<p>Part laboratory notebook, part family scrapbook. Search the whole site from the navigation bar, or use the filters below to explore the journal.</p>
-</div>
-<div class="journal-empty-state" data-journal-empty="" hidden="">
-  <span aria-hidden="true">✦</span>
-  <h2 class="anchored">The shelves are ready.</h2>
-  <p>Our first public entry is still being polished. Soon this will fill up with notes, projects, places, and other things worth keeping.</p>
-</div>
-<script src="assets/journal.js" defer=""></script>
+<div class="pm-page pm-journal" role="main">
+<section id="journal" class="level1 pm-prose">
+<h1>Journal</h1>
+<p>Posts by Peter and Marta, newest first. There’s an <a href="blog.xml">RSS feed</a> too.</p>
+</section>
+<p class="pm-filter" hidden="">Posts filed under <span data-category=""></span>. <a href="blog.html">Show all posts</a></p>
+<script>
+  // Quarto filters the list when the address ends in #category=...; say so.
+  (() => {
+    const note = document.querySelector(".pm-filter");
+    const show = () => {
+      const match = location.hash.match(/category=([^&]*)/);
+      note.hidden = !match;
+      if (match) note.querySelector("[data-category]").textContent = decodeURIComponent(match[1]);
+    };
+    addEventListener("hashchange", show);
+    show();
+  })();
+</script>
+<div id="listing-posts" class="quarto-listing quarto-listing-container-custom">
 
+<ul class="list pm-posts">
 
+<li class="pm-post" data-index="0" data-categories="cHJvamVjdHMlMkNtYXRo" data-listing-date-sort="1792123200000" data-listing-file-modified-sort="1792182673159" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="560">
+<span class="pm-post-date">Oct 16, 2026</span>
+<span class="pm-post-text">
+<a class="pm-post-title" href="./posts/mirror/index.html">The mirror on the front page</a>
+<span class="pm-post-desc">How 294 small mirrors can write with sunlight, and how the copy on our home page works.</span>
 
+<span class="pm-post-cats"><a href="./blog.html#category=projects">projects</a>, <a href="./blog.html#category=math">math</a></span>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="listing-actions-group">
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list grid quarto-listing-cols-3">
+</span>
+</li>
 
-</div>
+</ul>
+
 <div class="listing-no-matching d-none">No matching items</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+</div>
+</div>
+
+
+
+
+
+<script>
+  // Name the site's navigation, so screen readers can tell it from a post's
+  // table of contents.
+  document.querySelector("#quarto-header nav")?.setAttribute("aria-label", "Site");
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -841,7 +806,7 @@ window.Quarto = {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Made by Peter &amp; Marta—somewhere between a notebook and a scrapbook.</p>
+<p>Peter and Marta</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -849,15 +814,14 @@ window.Quarto = {
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./blog.html">
-<p>Journal</p>
+    <a class="nav-link" href="./blog.xml">
+<p>RSS</p>
 </a>
   </li>  
-    <li class="nav-item compact">
-    <a class="nav-link" href="./blog.xml">
-      <i class="bi bi-rss" role="img" aria-label="RSS feed">
-</i> 
-    </a>
+    <li class="nav-item">
+    <a class="nav-link" href="https://github.com/peterdsharpe/family-website">
+<p>Source</p>
+</a>
   </li>  
 </ul>
     </div>
@@ -867,5 +831,4 @@ window.Quarto = {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

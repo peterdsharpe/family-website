@@ -5,11 +5,106 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>The PeteMart Journal</title>
+<title>PeteMart</title>
 <link>https://petem.art/blog.html</link>
 <atom:link href="https://petem.art/blog.xml" rel="self" type="application/rss+xml"/>
-<description>Notes, projects, field reports, and other things Peter and Marta want to remember.</description>
+<description>Posts by Peter and Marta, newest first.</description>
+<image>
+<url>https://petem.art/assets/goose-card.jpg</url>
+<title>PeteMart</title>
+<link>https://petem.art/blog.html</link>
+</image>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Fri, 11 Sep 2026 20:23:55 GMT</lastBuildDate>
+<lastBuildDate>Fri, 16 Oct 2026 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>The mirror on the front page</title>
+  <dc:creator>Peter and Marta</dc:creator>
+  <link>https://petem.art/posts/mirror/</link>
+  <description><![CDATA[ 
+
+
+<div class="pm-title-block">
+
+<div class="pm-title-meta">
+<p class="subtitle">How 294 small mirrors can write with sunlight, and how the copy on our home page works.</p>
+<p class="pm-byline">
+<time class="date">October 16, 2026</time> · Peter and Marta · <span class="pm-cats">projects, math</span>
+</p>
+</div>
+</div>
+
+
+<p>The light on our home page copies something Peter made for Marta: a hexagon of 294 small triangular mirrors, each about an inch on a side, set in a 3D-printed frame. Held in the sun at the right height above the ground, it throws 294 patches of light, and the patches spell out a message.</p>
+<p>This post explains how that works, and how the copy on the home page works.</p>
+<section id="one-mirror" class="level2">
+<h2 class="anchored" data-anchor-id="one-mirror">One mirror</h2>
+<p>A flat mirror sends light away at the same angle it arrives. To send sunlight to a chosen spot, tilt the mirror so that its normal points halfway between the sun and the spot:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Chat%7B%5Cmathbf%20n%7D%20=%20%5Cfrac%7B%5Chat%7B%5Cmathbf%20s%7D%20+%20%5Chat%7B%5Cmathbf%20t%7D%7D%7B%5ClVert%20%5Chat%7B%5Cmathbf%20s%7D%20+%20%5Chat%7B%5Cmathbf%20t%7D%20%5CrVert%7D,%0A"></p>
+<p>where <img src="https://latex.codecogs.com/png.latex?%5Chat%7B%5Cmathbf%20s%7D"> points from the mirror toward the sun and <img src="https://latex.codecogs.com/png.latex?%5Chat%7B%5Cmathbf%20t%7D"> points from the mirror toward the spot. Work that out for each of the 294 mirrors and every patch of light lands where it should.</p>
+</section>
+<section id="which-mirror-lights-which-spot" class="level2">
+<h2 class="anchored" data-anchor-id="which-mirror-lights-which-spot">Which mirror lights which spot</h2>
+<p>The hard part is choosing which mirror lights which spot. Any mirror can be tilted to reach any spot, so there are <img src="https://latex.codecogs.com/png.latex?294!%20%5Capprox%2010%5E%7B600%7D"> ways to pair them up. At exactly the design height, all of them make the same picture.</p>
+<p>Most of them fall apart if the ground is a little nearer or farther. Each patch then lands short of its spot or past it, by an amount that depends on where its mirror sits in the hexagon. If the spots next to each other in a letter get their light from mirrors next to each other, those misses are alike, and the letters stay readable.</p>
+<p>Peter looked for a good pairing with simulated annealing, run in parallel on MIT’s SuperCloud cluster. It went through about 50 billion pairings before the frame was printed.</p>
+</section>
+<section id="the-copy-on-the-home-page" class="level2">
+<h2 class="anchored" data-anchor-id="the-copy-on-the-home-page">The copy on the home page</h2>
+<p>The home page does the same thing in two dimensions. A reflected ray travels in a straight line, so a patch that is a fraction <img src="https://latex.codecogs.com/png.latex?s"> of the way from its mirror <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%20m_i"> to its spot <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%20t_i"> is at</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%20p_i(s)%20=%20(1%20-%20s)%5C,%5Cmathbf%20m_i%20+%20s%5C,%5Cmathbf%20t_i%20.%0A"></p>
+<p>At <img src="https://latex.codecogs.com/png.latex?s%20=%200"> the patches still make the hexagon, at <img src="https://latex.codecogs.com/png.latex?s%20=%201"> they spell the word, and past <img src="https://latex.codecogs.com/png.latex?1"> the word grows and loosens. The slider under the picture sets <img src="https://latex.codecogs.com/png.latex?s">.</p>
+<p>The 294 spots are spread evenly along “hello” in a single-stroke script, one of the line fonts Allen Hershey designed in the 1960s for early computer displays. The pairing does not come from annealing. SciPy’s <code>linear_sum_assignment</code> solves the assignment problem exactly, finding the pairing with the least total squared distance between mirrors and spots, in well under a second:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> scipy.optimize <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> linear_sum_assignment</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">gap <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> mirror[:, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, :] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> target[<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, :, :]  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># every mirror to every spot</span></span>
+<span id="cb1-4">cost <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (gap<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb1-5">rows, cols <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> linear_sum_assignment(cost)</span>
+<span id="cb1-6">target <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> target[cols[np.argsort(rows)]]</span></code></pre></div></div>
+<p>That is not the goal Peter optimized for, but it has a similar effect: nearby spots tend to get their light from nearby mirrors, so the word stays readable for a while on either side of <img src="https://latex.codecogs.com/png.latex?s%20=%201">.</p>
+<p>Each patch is drawn as a soft triangle, and it gets softer the farther it travels, because sunlight comes from the whole disc of the sun. Where patches overlap, their light adds up, which is why the crossings in the letters glow.</p>
+<p>The script that makes the data is <a href="https://github.com/peterdsharpe/family-website/blob/main/_tools/mirror_points.py"><code>_tools/mirror_points.py</code></a>, and the drawing is <a href="https://github.com/peterdsharpe/family-website/blob/main/assets/mirror.js"><code>assets/mirror.js</code></a>. The real mirror’s design code is in <a href="https://github.com/peterdsharpe/mirror-array">peterdsharpe/mirror-array</a>.</p>
+
+
+<div class="pm-back">
+<p><a href="../../blog.html">All posts</a></p>
+</div>
+</section>
+
+ ]]></description>
+  <category>projects</category>
+  <category>math</category>
+  <guid>https://petem.art/posts/mirror/</guid>
+  <pubDate>Fri, 16 Oct 2026 04:00:00 GMT</pubDate>
+</item>
 </channel>
 </rss>

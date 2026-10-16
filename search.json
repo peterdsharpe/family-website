@@ -1,37 +1,58 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Hello, we’re PeteMart.",
+    "objectID": "posts/mirror/index.html",
+    "href": "posts/mirror/index.html",
+    "title": "The mirror on the front page",
     "section": "",
-    "text": "We’re Peter and Marta, often known together as PeteMart. This is our shared home on the web for things we make, learn, and want to remember."
+    "text": "How 294 small mirrors can write with sunlight, and how the copy on our home page works.\n\nOctober 16, 2026 · Peter and Marta · projects, math\nThe light on our home page copies something Peter made for Marta: a hexagon of 294 small triangular mirrors, each about an inch on a side, set in a 3D-printed frame. Held in the sun at the right height above the ground, it throws 294 patches of light, and the patches spell out a message.\nThis post explains how that works, and how the copy on the home page works."
   },
   {
-    "objectID": "about.html#why-make-a-family-website",
-    "href": "about.html#why-make-a-family-website",
-    "title": "Hello, we’re PeteMart.",
-    "section": "Why make a family website?",
-    "text": "Why make a family website?\nBecause the nicest parts of the internet still feel handmade.\nWe wanted something more lasting than a social feed and less formal than a portfolio: a place where a technical deep dive can sit beside a trip report, a favorite recipe, or a tiny project that made us smile.\n\n\nThink of it as a kitchen table with unusually good support for equations and source code."
+    "objectID": "posts/mirror/index.html#one-mirror",
+    "href": "posts/mirror/index.html#one-mirror",
+    "title": "The mirror on the front page",
+    "section": "One mirror",
+    "text": "One mirror\nA flat mirror sends light away at the same angle it arrives. To send sunlight to a chosen spot, tilt the mirror so that its normal points halfway between the sun and the spot:\n\\[\n\\hat{\\mathbf n} = \\frac{\\hat{\\mathbf s} + \\hat{\\mathbf t}}{\\lVert \\hat{\\mathbf s} + \\hat{\\mathbf t} \\rVert},\n\\]\nwhere \\(\\hat{\\mathbf s}\\) points from the mirror toward the sun and \\(\\hat{\\mathbf t}\\) points from the mirror toward the spot. Work that out for each of the 294 mirrors and every patch of light lands where it should."
   },
   {
-    "objectID": "about.html#what-youll-find-here",
-    "href": "about.html#what-youll-find-here",
-    "title": "Hello, we’re PeteMart.",
-    "section": "What you’ll find here",
-    "text": "What you’ll find here\n\n\nIdeas Notes, explanations, reading, and things we’re still figuring out.\n\n\nPlaces Travels, meals, photographs, and details worth keeping.\n\n\nProjects Experiments, tools, code, and other evidence of curiosity getting out of hand.\n\n\nThe site will grow as we do. For now, you can wander through the journal or check back when the next small wonder arrives."
+    "objectID": "posts/mirror/index.html#which-mirror-lights-which-spot",
+    "href": "posts/mirror/index.html#which-mirror-lights-which-spot",
+    "title": "The mirror on the front page",
+    "section": "Which mirror lights which spot",
+    "text": "Which mirror lights which spot\nThe hard part is choosing which mirror lights which spot. Any mirror can be tilted to reach any spot, so there are \\(294! \\approx 10^{600}\\) ways to pair them up. At exactly the design height, all of them make the same picture.\nMost of them fall apart if the ground is a little nearer or farther. Each patch then lands short of its spot or past it, by an amount that depends on where its mirror sits in the hexagon. If the spots next to each other in a letter get their light from mirrors next to each other, those misses are alike, and the letters stay readable.\nPeter looked for a good pairing with simulated annealing, run in parallel on MIT’s SuperCloud cluster. It went through about 50 billion pairings before the frame was printed."
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Journal",
-    "section": "",
-    "text": "Part laboratory notebook, part family scrapbook. Search the whole site from the navigation bar, or use the filters below to explore the journal.\n\n\n  ✦\n  The shelves are ready.\n  Our first public entry is still being polished. Soon this will fill up with notes, projects, places, and other things worth keeping.\n\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\nNo matching items\n Back to top"
+    "objectID": "posts/mirror/index.html#the-copy-on-the-home-page",
+    "href": "posts/mirror/index.html#the-copy-on-the-home-page",
+    "title": "The mirror on the front page",
+    "section": "The copy on the home page",
+    "text": "The copy on the home page\nThe home page does the same thing in two dimensions. A reflected ray travels in a straight line, so a patch that is a fraction \\(s\\) of the way from its mirror \\(\\mathbf m_i\\) to its spot \\(\\mathbf t_i\\) is at\n\\[\n\\mathbf p_i(s) = (1 - s)\\,\\mathbf m_i + s\\,\\mathbf t_i .\n\\]\nAt \\(s = 0\\) the patches still make the hexagon, at \\(s = 1\\) they spell the word, and past \\(1\\) the word grows and loosens. The slider under the picture sets \\(s\\).\nThe 294 spots are spread evenly along “hello” in a single-stroke script, one of the line fonts Allen Hershey designed in the 1960s for early computer displays. The pairing does not come from annealing. SciPy’s linear_sum_assignment solves the assignment problem exactly, finding the pairing with the least total squared distance between mirrors and spots, in well under a second:\nfrom scipy.optimize import linear_sum_assignment\n\ngap = mirror[:, None, :] - target[None, :, :]  # every mirror to every spot\ncost = (gap**2).sum(-1)\nrows, cols = linear_sum_assignment(cost)\ntarget = target[cols[np.argsort(rows)]]\nThat is not the goal Peter optimized for, but it has a similar effect: nearby spots tend to get their light from nearby mirrors, so the word stays readable for a while on either side of \\(s = 1\\).\nEach patch is drawn as a soft triangle, and it gets softer the farther it travels, because sunlight comes from the whole disc of the sun. Where patches overlap, their light adds up, which is why the crossings in the letters glow.\nThe script that makes the data is _tools/mirror_points.py, and the drawing is assets/mirror.js. The real mirror’s design code is in peterdsharpe/mirror-array.\n\n\n\nAll posts"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "PeteMart · Peter & Marta’s little corner of the internet",
-    "section": "",
-    "text": "Peter + Marta / PeteMart\n    Our little cornerof the internet.\n    A shared notebook for things we make, learn, notice, and want to remember.\n    \n      Read the journal ↗\n      Meet PeteMart\n    \n    ✦ Experiments, field notes, code, recipes, and the occasional beautiful graph.\n  \n\n  \n    \n      \n      \n        P&M\n      \n       collecting small wonders\n    \n    move your pointer through our orbit\n  \n\n\n\n  NOTES✦CODE✦PLACES✦RECIPES✦PROJECTS\n\n\n\n  01\n  \n    A shared notebook\n    A small site withroom to grow.\n  \n  \n    We wanted a place on the web that felt like ours: part laboratory notebook, part family scrapbook, and part playground.\n    Some entries may have equations and Python; others may just have a good meal or a place worth returning to. That mix is the point.\n  \n\n\n\n  \n    What lives here\n    Three drawers in the cabinet.\n  \n  \n    \n      01 / Notebook↗\n      Σ\n      Notes & ideas\n      Essays, useful explanations, equations, code, and figures—kept readable enough to revisit later.\n      Browse the journal →\n    \n    \n      02 / Field notes↗\n      ⌖\n      Places & moments\n      Trips, meals, traditions, and little details that deserve somewhere better than a camera roll.\n      See what turns up →\n    \n    \n      03 / Workshop↗\n      ✣\n      Things we make\n      Small tools, ambitious experiments, odd side projects, and whatever else escapes the workbench.\n      Open the workshop →\n    \n  \n\n\n\n  \n    The PeteMart journal\n    Serious enough for math.Human enough for everything else.\n  \n  \n    Posts are searchable, organized by topic, and built to handle LaTeX, highlighted code, interactive widgets, and computed Python output without turning the whole site into a slow web app.\n    Go to the journal →\n  \n\n\n\n\n\n\n Back to top"
+    "objectID": "about.html#peter",
+    "href": "about.html#peter",
+    "title": "About us",
+    "section": "Peter",
+    "text": "Peter\nPeter writes physics and machine-learning software at NVIDIA. Before that he spent five years at MIT working out how to design aircraft with computers, and along the way he wrote AeroSandbox, an open-source tool for doing it.\nHe likes building things that move: radio-controlled airplanes, electric skateboards, and the electric bike he used to ride to the lab."
+  },
+  {
+    "objectID": "about.html#marta",
+    "href": "about.html#marta",
+    "title": "About us",
+    "section": "Marta",
+    "text": "Marta\nMarta studied math at MIT, with minors in computer science and literature. She now manages a team of software developers who work on healthcare data, and she teaches machine-learning classes at work, with more than 250 people in each.\nIn 2019 she led the team that won MakeMIT, a 24-hour hardware hackathon, with a tofu press you can run over Wi-Fi."
+  },
+  {
+    "objectID": "about.html#about-the-site",
+    "href": "about.html#about-the-site",
+    "title": "About us",
+    "section": "About the site",
+    "text": "About the site\nThe site is made with Quarto, which turns Markdown, math, and Python into web pages, and GitHub Pages hosts it. The text is set in Alegreya, designed by Juan Pablo del Peral. The green comes from the meadow in the goose painting. The source is on GitHub, if you’d like to see how it works."
+  },
+  {
+    "objectID": "index.html#journal",
+    "href": "index.html#journal",
+    "title": "PeteMart",
+    "section": "Journal",
+    "text": "Journal\nAll posts"
   }
 ]

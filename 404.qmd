@@ -30,7 +30,7 @@ page-layout: custom
 </svg>
 ```
 
-# Page not found
+# Non c'è! {lang="it"}
 
 There's nothing at this address. The link may be out of date, or it may have a typo in it.
 

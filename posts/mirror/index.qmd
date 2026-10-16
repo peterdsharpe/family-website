@@ -44,7 +44,8 @@ The 294 spots are spread evenly along "hello" in a single-stroke script, one of 
 ```python
 from scipy.optimize import linear_sum_assignment
 
-cost = ((mirror[:, None, :] - target[None, :, :]) ** 2).sum(-1)
+gap = mirror[:, None, :] - target[None, :, :]  # every mirror to every spot
+cost = (gap**2).sum(-1)
 rows, cols = linear_sum_assignment(cost)
 target = target[cols[np.argsort(rows)]]
 ```

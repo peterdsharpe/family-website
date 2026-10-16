@@ -1,5 +1,6 @@
 ---
-pagetitle: "PeteMart"
+title: "PeteMart"
+title-block-style: none
 description: "The family website of Peter and Marta, in Somerville, Massachusetts."
 page-layout: custom
 html-math-method: plain

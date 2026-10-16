@@ -1,5 +1,6 @@
 ---
-pagetitle: "Journal · PeteMart"
+title: "Journal"
+title-block-style: none
 description: "Posts by Peter and Marta, newest first."
 page-layout: custom
 html-math-method: plain
@@ -25,7 +26,24 @@ listing:
 Posts by Peter and Marta, newest first. There's an [RSS feed](blog.xml) too.
 :::
 
-::: {#posts .pm-section-tight}
+```{=html}
+<p class="pm-filter" hidden>Posts filed under <span data-category></span>. <a href="blog.html">Show all posts</a></p>
+<script>
+  // Quarto filters the list when the address ends in #category=...; say so.
+  (() => {
+    const note = document.querySelector(".pm-filter");
+    const show = () => {
+      const match = location.hash.match(/category=([^&]*)/);
+      note.hidden = !match;
+      if (match) note.querySelector("[data-category]").textContent = decodeURIComponent(match[1]);
+    };
+    addEventListener("hashchange", show);
+    show();
+  })();
+</script>
+```
+
+::: {#posts}
 :::
 
 :::

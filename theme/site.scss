@@ -55,7 +55,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-@media (min-width: 768px) {
+// Larger text from 992px, where Quarto's article grid has room for it.
+@media (min-width: 992px) {
   body {
     font-size: 1.2rem;
   }
@@ -267,20 +268,24 @@ table,
 }
 
 #quarto-header .aa-DetachedSearchButtonIcon {
-  width: auto;
-  height: auto;
-  color: inherit;
-}
-
-#quarto-header .aa-DetachedSearchButtonIcon svg,
-#quarto-header .aa-SubmitIcon {
   width: 1.15rem;
   height: 1.15rem;
   color: inherit;
+  background-color: currentColor;
+  -webkit-mask: var(--pm-search-icon) center / contain no-repeat;
+  mask: var(--pm-search-icon) center / contain no-repeat;
+}
+
+#quarto-header .aa-DetachedSearchButtonIcon svg {
+  display: none;
 }
 
 #quarto-header .aa-DetachedSearchButtonPlaceholder {
   display: none;
+}
+
+:root {
+  --pm-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.2'/%3E%3Cpath d='M15.2 15.2L20.5 20.5'/%3E%3C/svg%3E");
 }
 
 // A moon by day (switch to evening) and a sun by evening. Drawn with a CSS
@@ -326,7 +331,14 @@ main.content {
   padding-top: 0.5rem;
 }
 
-// Custom-layout pages (home, about, journal, 404) share one column system.
+// Custom-layout pages (home, about, journal, 404) write their own <h1>. They
+// still set a title for the tab, link previews and search, and Quarto prints
+// that title in a header of its own, so hide it.
+.page-layout-custom > #title-block-header {
+  display: none;
+}
+
+// Custom-layout pages share one column system.
 // (Quarto pads every child of #quarto-content, so match its specificity.)
 #quarto-content > .pm-page {
   max-width: calc(var(--pm-width) + 2 * var(--pm-gutter));
@@ -512,20 +524,16 @@ main.content {
 }
 
 .pm-post {
-  border-bottom: 1px solid var(--pm-rule);
-}
-
-.pm-post > a {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.1rem;
   padding: 0.9rem 0;
-  color: inherit;
-  text-decoration: none;
+  border-bottom: 1px solid var(--pm-rule);
 }
 
 @media (min-width: 640px) {
-  .pm-post > a {
+  .pm-post {
     grid-template-columns: 8.5rem minmax(0, 1fr);
     column-gap: 1.5rem;
   }
@@ -537,7 +545,10 @@ main.content {
 .pm-post-date {
   color: var(--pm-soft);
   font-size: 0.95rem;
-  font-variant-numeric: oldstyle-nums;
+}
+
+.pm-post-text {
+  min-width: 0;
 }
 
 .pm-post-title {
@@ -545,9 +556,17 @@ main.content {
   font-size: 1.15em;
   line-height: 1.25;
   color: var(--pm-ink);
+  text-decoration: none;
 }
 
-.pm-post > a:hover .pm-post-title {
+// The title's link covers the whole row; category links sit above it.
+.pm-post-title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.pm-post:hover .pm-post-title {
   color: var(--pm-link);
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -560,16 +579,24 @@ main.content {
   margin-top: 0.15rem;
 }
 
-.pm-post-text {
-  min-width: 0;
-}
-
 .pm-post-cats {
+  position: relative;
+  z-index: 1;
   display: block;
   margin-top: 0.25rem;
   font-size: 0.9rem;
   font-style: italic;
   color: var(--pm-soft);
+}
+
+.pm-post-cats a {
+  color: inherit;
+  text-decoration-color: var(--pm-rule);
+}
+
+.pm-post-cats a:hover {
+  color: var(--pm-link);
+  text-decoration-color: currentColor;
 }
 
 .pm-empty {
@@ -578,6 +605,12 @@ main.content {
   padding: 0.9rem 0;
   margin: 0;
   border-bottom: 1px solid var(--pm-rule);
+}
+
+.pm-filter {
+  color: var(--pm-soft);
+  font-style: italic;
+  margin: 0 0 0.25rem;
 }
 
 // Quarto's own "no matching items" line, shown when a category filter is
@@ -987,6 +1020,76 @@ body.quarto-dark main img {
 .aa-DetachedOverlay,
 .aa-DetachedContainer {
   font-family: inherit;
+}
+
+.aa-DetachedContainer,
+.aa-DetachedContainer .aa-Panel,
+.aa-DetachedFormContainer {
+  background: var(--pm-paper) !important;
+  color: var(--pm-ink);
+  border-color: var(--pm-rule) !important;
+}
+
+.aa-DetachedContainer .aa-Form {
+  background: var(--pm-paper) !important;
+  border: 1px solid var(--pm-rule) !important;
+  box-shadow: none !important;
+}
+
+.aa-DetachedContainer .aa-Form:focus-within {
+  border-color: var(--pm-soft) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--pm-sun) 35%, transparent) !important;
+}
+
+.aa-DetachedContainer .aa-Input,
+.aa-DetachedCancelButton {
+  color: var(--pm-ink) !important;
+  font-family: inherit;
+}
+
+.aa-DetachedContainer .search-result-header,
+.aa-DetachedContainer .aa-SourceHeader {
+  background: transparent !important;
+  color: var(--pm-soft) !important;
+  font-style: italic;
+  border-color: var(--pm-rule) !important;
+}
+
+.aa-DetachedContainer .aa-Item[aria-selected="true"],
+.aa-DetachedContainer .aa-Item[aria-selected="true"] .search-item,
+.aa-DetachedOverlay li.aa-Item[aria-selected="true"] .search-item .search-result-title-container,
+.aa-DetachedOverlay li.aa-Item[aria-selected="true"] .search-item .search-result-text-container,
+.aa-DetachedOverlay li.aa-Item[aria-selected="true"] .search-item .search-result-section,
+.aa-DetachedOverlay li.aa-Item[aria-selected="true"] .search-item .search-result-text {
+  background-color: var(--pm-wash) !important;
+}
+
+.aa-DetachedContainer .aa-Item .search-result-title,
+.aa-DetachedContainer .aa-Item .search-result-section,
+.aa-DetachedContainer .aa-Item[aria-selected="true"] .search-result-title,
+.aa-DetachedContainer .aa-Item[aria-selected="true"] .search-result-section,
+.aa-DetachedContainer .aa-Item[aria-selected="true"] .search-result-icon {
+  color: var(--pm-ink) !important;
+}
+
+.aa-DetachedContainer .aa-Item .search-result-text,
+.aa-DetachedContainer .aa-Item[aria-selected="true"] .search-result-text {
+  color: var(--pm-soft) !important;
+}
+
+.aa-DetachedContainer .search-result-title {
+  font-weight: 700;
+}
+
+.aa-DetachedContainer mark.search-match,
+.aa-DetachedContainer .aa-Item[aria-selected="true"] mark.search-match {
+  background: color-mix(in srgb, var(--pm-sun) 38%, transparent) !important;
+  color: inherit !important;
+  padding: 0 0.1em;
+}
+
+.aa-DetachedContainer .search-result-icon {
+  color: var(--pm-soft) !important;
 }
 
 // ------------------------------------------------------------ motion

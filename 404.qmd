@@ -1,5 +1,6 @@
 ---
-pagetitle: "Page not found · PeteMart"
+title: "Page not found"
+title-block-style: none
 page-layout: custom
 ---
 

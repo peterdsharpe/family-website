@@ -1,5 +1,6 @@
 ---
-pagetitle: "About · PeteMart"
+title: "About us"
+title-block-style: none
 description: "Who Peter and Marta are, and how this website is made."
 page-layout: custom
 ---

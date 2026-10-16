@@ -34,6 +34,10 @@ website:
       - text: Source
         href: https://github.com/peterdsharpe/family-website
 
+language:
+  search-matching-documents-text: "found"
+  search-no-results-text: "Nothing found"
+
 format:
   html:
     theme:

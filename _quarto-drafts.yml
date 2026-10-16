@@ -1,0 +1,6 @@
+# `quarto render --profile drafts` builds the site with draft posts listed and
+# visible, into _site-drafts/, for checking how a post looks before it goes out.
+project:
+  output-dir: _site-drafts
+website:
+  draft-mode: visible

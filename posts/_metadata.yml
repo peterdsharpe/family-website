@@ -4,12 +4,17 @@
 # keeps normal site builds fast and reproducible without rerunning notebooks.
 freeze: true
 
-# Scientific-writing defaults. MathJax support is built into Quarto HTML.
+template-partials:
+  - ../theme/title-block.html
+filters:
+  - ../theme/back-link.lua
+
 toc: true
-toc-depth: 3
-title-block-banner: false
+toc-depth: 2
+toc-title: "In this post"
+reference-location: margin
+citation-location: margin
 code-fold: true
 code-summary: "Show the code"
-code-copy: hover
-code-overflow: wrap
 fig-cap-location: bottom
+callout-icon: false

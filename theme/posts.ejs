@@ -1,0 +1,24 @@
+<% /*
+  The list of journal posts, used on the home page and the journal page.
+  Quarto's list.js filters these <li>s by category, so each carries the
+  attributes metadataAttrs() writes. With no posts there is no <ul class="list">
+  at all, which tells list.js to stay out of the way.
+*/ %>
+<% if (items.length === 0) { %>
+<p class="pm-empty">Nothing posted yet.</p>
+<% } else { %>
+<ul class="list pm-posts">
+<% for (const item of items) { %>
+<li class="pm-post" <%= metadataAttrs(item) %>>
+<a href="<%- item.path %>">
+<span class="pm-post-date"><%= item.date %></span>
+<span class="pm-post-text">
+<span class="pm-post-title"><%= item.title %></span>
+<% if (item.description) { %><span class="pm-post-desc"><%= item.description %></span><% } %>
+<% if (templateParams && templateParams["show-categories"] && item.categories) { %><span class="pm-post-cats"><%= item.categories.join(", ") %></span><% } %>
+</span>
+</a>
+</li>
+<% } %>
+</ul>
+<% } %>

@@ -1,0 +1,48 @@
+/*-- scss:defaults --*/
+
+// Daytime: warm paper and ink. The green is the meadow in Peter's goose
+// painting, darkened until it passes WCAG AA as body text.
+$pm-paper: #f7f2e8;
+$pm-wash: #efe8da;
+$pm-ink: #2b2723;
+$pm-soft: #5f574e;
+$pm-rule: #ddd3c2;
+$pm-link: #3a6a2a;
+$pm-link-hover: #27491b;
+$pm-sun: #e8a73a;
+$pm-flower: #b8432f;
+
+$body-bg: $pm-paper;
+$body-color: $pm-ink;
+$link-color: $pm-link;
+$text-muted: $pm-soft;
+$border-color: $pm-rule;
+$navbar-bg: $pm-paper;
+$navbar-fg: $pm-soft;
+$navbar-hl: $pm-ink;
+$footer-bg: $pm-paper;
+$footer-fg: $pm-soft;
+$code-block-bg: $pm-wash;
+$code-color: #6b3a1e;
+$toc-color: $pm-soft;
+
+/*-- scss:rules --*/
+
+:root {
+  --pm-paper: #{$pm-paper};
+  --pm-wash: #{$pm-wash};
+  --pm-ink: #{$pm-ink};
+  --pm-soft: #{$pm-soft};
+  --pm-rule: #{$pm-rule};
+  --pm-link: #{$pm-link};
+  --pm-link-hover: #{$pm-link-hover};
+  --pm-sun: #{$pm-sun};
+  --pm-flower: #{$pm-flower};
+  // The mirror on the home page reads these: the wall in shade, a little
+  // daylight in its middle, and the colours of the reflected sunlight.
+  --pm-shade: #3b3129;
+  --pm-glow: #4d4034;
+  --pm-light: #fff3d6;
+  --pm-halo: #ffc45c;
+  color-scheme: light;
+}

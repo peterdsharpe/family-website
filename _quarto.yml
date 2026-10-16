@@ -2,52 +2,52 @@ project:
   type: website
   resources:
     - assets
+    - theme/fonts/OFL.txt
     - CNAME
     - .nojekyll
-  brand: _brand.yml
 
 website:
   title: "PeteMart"
   site-url: https://petem.art
-  description: "A shared notebook, scrapbook, and playground by Peter and Marta."
+  description: "The family website of Peter and Marta, in Somerville, Massachusetts."
   favicon: assets/favicon.svg
+  image: assets/goose-card.jpg
+  image-alt: "A watercolor of a Canada goose in a meadow, painted by Peter."
   open-graph: true
   twitter-card: true
-  back-to-top-navigation: true
   search:
     location: navbar
     type: overlay
-    limit: 20
   navbar:
-    pinned: true
-    background: transparent
-    left:
-      - href: index.qmd
-        text: Home
+    collapse: false
+    pinned: false
+    right:
       - href: blog.qmd
         text: Journal
       - href: about.qmd
         text: About
-    right:
-      - icon: rss
-        href: blog.xml
-        aria-label: RSS feed
   page-footer:
-    border: false
-    left: "Made by Peter & Marta—somewhere between a notebook and a scrapbook."
+    left: "Peter and Marta, Somerville, Massachusetts"
     right:
-      - text: Journal
-        href: blog.qmd
-      - icon: rss
+      - text: RSS
         href: blog.xml
-        aria-label: RSS feed
+      - text: Source
+        href: https://github.com/peterdsharpe/family-website
 
 format:
   html:
-    theme: default
-    css: styles.css
+    theme:
+      light: [theme/light.scss, theme/site.scss]
+      dark: [theme/dark.scss, theme/site.scss]
+    respect-user-color-scheme: true
+    include-in-header: theme/head.html
+    lang: en-US
+    date-format: "MMMM D, YYYY"
+    smooth-scroll: false
+    anchor-sections: true
     code-copy: hover
     code-overflow: wrap
-    smooth-scroll: true
-    anchor-sections: true
-    respect-user-color-scheme: true
+    highlight-style:
+      light: gruvbox-light
+      dark: gruvbox-dark
+    link-external-newwindow: false

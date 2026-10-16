@@ -4,7 +4,6 @@ description: "How 294 small mirrors can write with sunlight, and how the copy on
 author: "Peter and Marta"
 date: "2026-10-16"
 categories: [projects, math]
-draft: true
 ---
 
 The light on our home page copies something Peter made for Marta: a hexagon of 294 small triangular mirrors, each about an inch on a side, set in a 3D-printed frame. Held in the sun at the right height above the ground, it throws 294 patches of light, and the patches spell out a message.

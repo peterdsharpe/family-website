@@ -1,7 +1,10 @@
-<header id="title-block-header" class="pm-title-block">
+$-- The title and the line under it on journal posts. Quarto moves the <h1>
+$-- into its own #title-block-header, so this wrapper is a plain <div>.
+<div class="pm-title-block">
 $if(title)$
 <h1 class="title">$title$</h1>
 $endif$
+<div class="pm-title-meta">
 $if(subtitle)$
 <p class="subtitle">$subtitle$</p>
 $elseif(description)$
@@ -10,4 +13,5 @@ $endif$
 <p class="pm-byline">
 $if(date)$<time class="date">$date$</time>$endif$$if(by-author)$ · $for(by-author)$$by-author.name.literal$$sep$ and $endfor$$endif$$if(categories)$ · <span class="pm-cats">$for(categories)$$categories$$sep$, $endfor$</span>$endif$
 </p>
-</header>
+</div>
+</div>

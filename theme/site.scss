@@ -83,7 +83,6 @@ main li {
 main .subtitle,
 main figcaption,
 .pm-post-desc,
-.pm-tea,
 .pm-mirror figcaption {
   hyphens: manual;
 }
@@ -143,6 +142,15 @@ a:hover {
   border-radius: 2px;
 }
 
+// Bootstrap swaps the outline for a faint glow on its nav links; keep ours.
+.nav-link:focus-visible,
+#TOC .nav-link:focus-visible,
+.nav-footer .nav-link:focus-visible {
+  outline: 2px solid var(--pm-link);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
 hr {
   border: 0;
   border-top: 1px solid var(--pm-rule);
@@ -175,7 +183,7 @@ table,
 #quarto-header .navbar {
   background: var(--pm-paper) !important;
   border-bottom: 1px solid var(--pm-rule);
-  padding-block: 0.6rem;
+  padding: 0.6rem 0;
   box-shadow: none;
 }
 
@@ -364,6 +372,7 @@ main.content {
 
 .pm-home-top {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
 }
@@ -383,12 +392,6 @@ main.content {
 
 .pm-hello p {
   max-width: 30rem;
-}
-
-.pm-tea {
-  font-style: italic;
-  color: var(--pm-soft);
-  margin-top: 1.4rem;
 }
 
 .pm-section {
@@ -411,9 +414,12 @@ main.content {
 }
 
 .pm-section-head a {
-  color: var(--pm-soft);
-  font-style: italic;
   white-space: nowrap;
+}
+
+// While there are no posts, the home page leaves the journal out.
+.pm-section:has(.pm-empty) {
+  display: none;
 }
 
 // ------------------------------------------------------- mirror toy
@@ -441,10 +447,6 @@ main.content {
   display: block;
 }
 
-.pm-mirror-stage:focus-visible {
-  outline-offset: 4px;
-}
-
 .pm-mirror-controls {
   display: flex;
   align-items: center;
@@ -460,10 +462,21 @@ main.content {
   margin: 0;
 }
 
+// On the narrowest phones the label takes its own line above the slider.
+@media (max-width: 379.98px) {
+  .pm-mirror-controls {
+    flex-wrap: wrap;
+    row-gap: 0;
+  }
+  .pm-mirror-controls label {
+    flex-basis: 100%;
+  }
+}
+
 // A hairline track and a small gold bead, the same in every browser.
 .pm-mirror-controls input[type="range"] {
   flex: 1 1 auto;
-  max-width: 18rem;
+  min-width: 0;
   height: 1.5rem;
   margin: 0;
   background: transparent;
@@ -504,6 +517,36 @@ main.content {
 .pm-mirror-controls input[type="range"]:focus-visible {
   outline: 2px solid var(--pm-link);
   outline-offset: 2px;
+}
+
+.pm-mirror-again {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-right: -0.4rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--pm-soft);
+  cursor: pointer;
+}
+
+.pm-mirror-again:hover {
+  color: var(--pm-ink);
+}
+
+.pm-mirror-again svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .pm-mirror figcaption {
@@ -613,6 +656,11 @@ main.content {
   margin: 0 0 0.25rem;
 }
 
+.pm-journal .pm-posts,
+.pm-journal .pm-empty {
+  border-top: 1px solid var(--pm-rule);
+}
+
 // Quarto's own "no matching items" line, shown when a category filter is
 // empty. Our template already says so when there are no posts at all.
 .quarto-listing .listing-no-matching {
@@ -655,12 +703,14 @@ main.content {
 
 // ---------------------------------------------------------------- posts
 
-.pm-title-block {
-  margin-bottom: 2rem;
+// Quarto lifts a post's <h1> into a header of its own; theme/title-block.html
+// adds the line under it.
+#title-block-header.quarto-title-block .title {
+  margin-bottom: 0.6rem;
 }
 
-.pm-title-block .title {
-  margin-bottom: 0.6rem;
+.pm-title-block {
+  margin-bottom: 2rem;
 }
 
 .pm-title-block .subtitle {
@@ -908,7 +958,7 @@ body .footer .nav-footer {
 }
 
 .nav-footer a,
-.nav-footer .nav-link {
+body .footer .nav-footer .nav-link {
   color: var(--pm-soft);
   padding: 0 0 0 1rem;
 }
@@ -953,7 +1003,7 @@ body .footer .nav-footer {
 .pm-people {
   display: grid;
   gap: 2.5rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 @media (min-width: 900px) {
@@ -969,8 +1019,7 @@ body .footer .nav-footer {
 }
 
 .pm-goose {
-  margin: clamp(2.5rem, 7vw, 4rem) auto 0;
-  max-width: 880px;
+  margin: clamp(2.5rem, 7vw, 4rem) 0 0;
 }
 
 body.quarto-dark .pm-goose img,
@@ -999,6 +1048,7 @@ body.quarto-dark main img {
 
 .pm-colophon p {
   color: var(--pm-soft);
+  max-width: 34rem;
 }
 
 // -------------------------------------------------------------------- 404

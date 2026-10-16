@@ -47,3 +47,63 @@ $toc-color: $pm-soft;
   --pm-halo: #ffc45c;
   color-scheme: light;
 }
+
+// Code colours: gruvbox's hues, adjusted so every token reaches 4.5:1 on
+// the code background (WCAG AA).
+code span.kw,
+code span.cf,
+code span.al,
+code span.er {
+  color: #9d0006;
+}
+
+code span.dt,
+code span.at {
+  color: #8c5b0f;
+}
+
+code span.dv,
+code span.bn,
+code span.fl,
+code span.cn,
+code span.ch,
+code span.sc {
+  color: #8f3f71;
+}
+
+code span.st,
+code span.vs,
+code span.ss {
+  color: #6b670c;
+}
+
+code span.co,
+code span.do,
+code span.an,
+code span.cv,
+code span.in,
+code span.wa,
+code span.re {
+  color: #6e6259;
+  font-style: italic;
+}
+
+code span.fu,
+code span.im,
+code span.ex {
+  color: #3b6e4f;
+}
+
+code span.bu,
+code span.pp {
+  color: #af3a03;
+}
+
+code span.va {
+  color: #076678;
+}
+
+code span.op,
+code span.ot {
+  color: #3c3836;
+}

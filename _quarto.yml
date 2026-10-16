@@ -29,7 +29,7 @@ website:
       - href: about.qmd
         text: About
   page-footer:
-    left: "Peter and Marta, Somerville, Massachusetts"
+    left: "Peter and Marta"
     right:
       - text: RSS
         href: blog.xml
@@ -47,6 +47,7 @@ format:
       dark: [theme/dark.scss, theme/site.scss]
     respect-user-color-scheme: true
     include-in-header: theme/head.html
+    include-after-body: theme/after-body.html
     lang: en-US
     date-format: "MMMM D, YYYY"
     smooth-scroll: false

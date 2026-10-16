@@ -18,6 +18,7 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 source=$(git rev-parse --short HEAD)
+rm -rf _site   # Quarto keeps old stylesheets around between builds
 quarto render
 
 # Quarto writes an empty page in place of each draft post. Drop those, so a

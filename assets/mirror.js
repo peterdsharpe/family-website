@@ -21,6 +21,7 @@ function start(figure) {
   let distance = still.matches ? 1 : 0; // 0 at the mirror, 1 where the word is in focus
   let colors = readColors();
   let animation = 0;
+  let pause = 0; // a setTimeout waiting to start the light travelling
   let started = still.matches;
 
   function readColors() {
@@ -131,8 +132,13 @@ function start(figure) {
 
   const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2);
 
-  function travel(from, to, ms, then) {
+  function stop() {
     cancelAnimationFrame(animation);
+    clearTimeout(pause);
+  }
+
+  function travel(from, to, ms, then) {
+    stop();
     const t0 = performance.now();
     const step = (now) => {
       const t = Math.min(1, (now - t0) / ms);
@@ -146,20 +152,17 @@ function start(figure) {
   function play() {
     if (still.matches) return setDistance(1);
     const back = Math.max(250, 700 * distance);
-    travel(distance, 0, back, () => setTimeout(() => travel(0, 1, 2600), 300));
+    travel(distance, 0, back, () => {
+      pause = setTimeout(() => travel(0, 1, 2600), 300);
+    });
   }
 
   stage.addEventListener("click", play);
-  stage.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      play();
-    }
-  });
+  figure.querySelector(".pm-mirror-again")?.addEventListener("click", play);
 
   if (slider) {
     slider.addEventListener("input", () => {
-      cancelAnimationFrame(animation);
+      stop();
       started = true;
       setDistance(Number(slider.value));
     });
@@ -185,7 +188,7 @@ function start(figure) {
       if (!started && entries.some((e) => e.isIntersecting)) {
         started = true;
         seen.disconnect();
-        setTimeout(() => travel(0, 1, 2600), 500);
+        pause = setTimeout(() => travel(0, 1, 2600), 500);
       }
     },
     { threshold: 0.6 },

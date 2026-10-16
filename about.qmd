@@ -7,11 +7,7 @@ page-layout: custom
 
 ::: {.pm-page .pm-about role="main"}
 
-::: {.pm-prose}
 # About us
-
-We're Peter and Marta, and we live in Somerville, Massachusetts. Our friends call us PeteMart, and petem.art was available, so here we are.
-:::
 
 ::: {.pm-people}
 
@@ -20,13 +16,13 @@ We're Peter and Marta, and we live in Somerville, Massachusetts. Our friends cal
 
 Peter writes physics and machine-learning software at NVIDIA. Before that he spent five years at MIT working out how to design aircraft with computers, and along the way he wrote [AeroSandbox](https://github.com/peterdsharpe/AeroSandbox), an open-source tool for doing it.
 
-He likes building things that move: radio-controlled airplanes, electric skateboards, and the electric bike he used to ride to the lab. He also paints now and then. The goose below is his.
+He likes building things that move: radio-controlled airplanes, electric skateboards, and the electric bike he used to ride to the lab.
 :::
 
 ::: {.pm-person}
 ## Marta
 
-Marta studied math at MIT, with minors in computer science and literature. She now manages a team of software developers who work on healthcare data. She also teaches machine-learning classes at work, with more than 250 people in each.
+Marta studied math at MIT, with minors in computer science and literature. She now manages a team of software developers who work on healthcare data, and she teaches machine-learning classes at work, with more than 250 people in each.
 
 In 2019 she led the team that won MakeMIT, a 24-hour hardware hackathon, with [a tofu press you can run over Wi-Fi](https://devpost.com/software/tofupresto).
 :::
@@ -37,17 +33,17 @@ In 2019 she led the team that won MakeMIT, a 24-hour hardware hackathon, with [a
 <figure class="pm-goose">
   <img src="assets/goose-800.webp"
        srcset="assets/goose-800.webp 800w, assets/goose-1600.webp 1600w"
-       sizes="(min-width: 1180px) 1120px, 100vw"
+       sizes="(min-width: 1190px) 1120px, calc(100vw - 2.4rem)"
        width="1600" height="906" loading="lazy" decoding="async"
-       alt="A watercolor of a Canada goose standing in long grass dotted with red, yellow and purple flowers, with green hills and a blue-gray sky behind it.">
+       alt="A watercolor of a Canada goose standing in long grass dotted with red, yellow, and purple flowers, with green hills and a blue-gray sky behind it.">
   <figcaption>A Canada goose, in watercolor. Peter painted it in 2017.</figcaption>
 </figure>
 ```
 
-::: {.pm-colophon .pm-prose}
+::: {.pm-colophon}
 ## About the site
 
-The site is made with [Quarto](https://quarto.org), which turns Markdown, math and Python into web pages, and GitHub Pages hosts it. The text is set in [Alegreya](https://www.huertatipografica.com/en/fonts/alegreya-ht), designed by Juan Pablo del Peral. The green comes from the meadow in the goose painting. The [source](https://github.com/peterdsharpe/family-website) is on GitHub, if you'd like to see how it works.
+The site is made with [Quarto](https://quarto.org), which turns Markdown, math, and Python into web pages, and GitHub Pages hosts it. The text is set in [Alegreya](https://www.huertatipografica.com/en/fonts/alegreya-ht), designed by Juan Pablo del Peral. The green comes from the meadow in the goose painting. The [source](https://github.com/peterdsharpe/family-website) is on GitHub, if you'd like to see how it works.
 :::
 
 :::

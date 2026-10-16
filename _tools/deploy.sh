@@ -20,6 +20,10 @@ fi
 source=$(git rev-parse --short HEAD)
 quarto render
 
+# Quarto writes an empty page in place of each draft post. Drop those, so a
+# draft's address is a plain 404 instead of a blank page.
+find _site/posts -name index.html -size -200c -print -delete
+
 git_dir=$(git rev-parse --absolute-git-dir)
 scratch=$(mktemp -d)
 trap 'rm -rf "$scratch"' EXIT

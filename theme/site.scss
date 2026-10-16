@@ -1,0 +1,1156 @@
+/*-- scss:defaults --*/
+
+// One family for everything: Alegreya, by Juan Pablo del Peral at Huerta
+// Tipográfica. Its old-style figures and calligraphic italic do most of the
+// decorating on this site.
+$font-family-sans-serif: "Alegreya", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+$font-family-monospace: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+$font-size-base: 1.125rem;
+$line-height-base: 1.55;
+$headings-font-weight: 700;
+$headings-line-height: 1.15;
+$headings-margin-bottom: 0.5rem;
+$small-font-size: 0.875em;
+$border-radius: 0.25rem;
+$code-font-size: 0.8em;
+$toc-font-size: 0.95rem;
+
+// Column widths for article pages: about 70 characters of Alegreya per line.
+$grid-body-width: 640px;
+$grid-sidebar-width: 220px;
+$grid-margin-width: 260px;
+
+/*-- scss:rules --*/
+
+@font-face {
+  font-family: "Alegreya";
+  src: url("theme/fonts/alegreya-roman.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya";
+  src: url("theme/fonts/alegreya-italic.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+// ---------------------------------------------------------------- base
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+:root {
+  --pm-gutter: clamp(1.15rem, 5vw, 2rem);
+  --pm-width: 1120px;
+}
+
+body {
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+}
+
+// Larger text from 992px, where Quarto's article grid has room for it.
+@media (min-width: 992px) {
+  body {
+    font-size: 1.2rem;
+  }
+}
+
+::selection {
+  background: color-mix(in srgb, var(--pm-sun) 38%, transparent);
+  color: inherit;
+}
+
+p,
+li,
+dd,
+figcaption {
+  text-wrap: pretty;
+}
+
+main p,
+main li {
+  hyphens: auto;
+  hyphenate-limit-chars: 7 3 3;
+}
+
+main .subtitle,
+main figcaption,
+.pm-post-desc,
+.pm-mirror figcaption {
+  hyphens: manual;
+}
+
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3 {
+  color: var(--pm-ink);
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+  hyphens: manual;
+}
+
+h1,
+.h1 {
+  font-size: clamp(2.1rem, 1.55rem + 2.6vw, 3.1rem);
+  line-height: 1.08;
+}
+
+h2,
+.h2 {
+  font-size: 1.55rem;
+  margin-top: 2.2rem;
+}
+
+h3,
+.h3 {
+  font-size: 1.25rem;
+  margin-top: 1.8rem;
+}
+
+// Quarto rules a line under every h2; on paper that reads like a form.
+h2,
+.h2 {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 120ms ease, text-decoration-color 120ms ease;
+}
+
+a:hover {
+  color: var(--pm-link-hover);
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--pm-link);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+// Bootstrap swaps the outline for a faint glow on its nav links; keep ours.
+.nav-link:focus-visible,
+#TOC .nav-link:focus-visible,
+.nav-footer .nav-link:focus-visible {
+  outline: 2px solid var(--pm-link);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--pm-rule);
+  opacity: 1;
+  margin: 2.5rem 0;
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+small,
+.small {
+  font-size: 0.875em;
+}
+
+// Lining, tabular figures where numbers sit in columns.
+table,
+.pm-tabular {
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+// ------------------------------------------------------------- navbar
+
+#quarto-header {
+  background: var(--pm-paper);
+}
+
+#quarto-header .navbar {
+  background: var(--pm-paper) !important;
+  border-bottom: 1px solid var(--pm-rule);
+  padding: 0.6rem 0;
+  box-shadow: none;
+}
+
+// Line the bar up with the page column, and keep its items in one order at
+// every width: name, links, search, then the day/evening switch.
+#quarto-header .navbar-container {
+  max-width: calc(var(--pm-width) + 2 * var(--pm-gutter));
+  margin-inline: auto;
+  padding-inline: var(--pm-gutter);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+#quarto-header .navbar-brand-container {
+  order: 0;
+  margin: 0 auto 0 0 !important;
+  padding-right: 0.5rem;
+  max-width: none;
+  flex: 0 0 auto;
+}
+
+#quarto-header .navbar-nav {
+  order: 1;
+  flex-direction: row;
+  margin: 0 !important;
+}
+
+#quarto-header #quarto-search {
+  order: 2;
+  margin: 0;
+}
+
+#quarto-header .quarto-navbar-tools {
+  order: 3;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  margin-right: 0;
+  padding-block: 0;
+}
+
+.navbar-brand .navbar-title {
+  color: var(--pm-ink);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+#quarto-header .navbar-nav .nav-link {
+  color: var(--pm-soft);
+  font-size: 1.15rem;
+  padding: 0.3rem 0.55rem;
+}
+
+#quarto-header .navbar-nav .nav-link:hover,
+#quarto-header .navbar-nav .nav-link:focus-visible {
+  color: var(--pm-ink);
+}
+
+#quarto-header .navbar-nav .nav-link.active {
+  color: var(--pm-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--pm-sun);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+// Search and the colour-scheme switch: small line icons in the ink colour.
+#quarto-header .aa-DetachedSearchButton,
+#quarto-header .quarto-color-scheme-toggle {
+  color: var(--pm-soft);
+  background: transparent;
+  border: 0;
+  padding: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+#quarto-header .aa-DetachedSearchButton:hover,
+#quarto-header .quarto-color-scheme-toggle:hover {
+  color: var(--pm-ink);
+}
+
+#quarto-header .aa-DetachedSearchButtonIcon {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: inherit;
+  background-color: currentColor;
+  -webkit-mask: var(--pm-search-icon) center / contain no-repeat;
+  mask: var(--pm-search-icon) center / contain no-repeat;
+}
+
+#quarto-header .aa-DetachedSearchButtonIcon svg {
+  display: none;
+}
+
+#quarto-header .aa-DetachedSearchButtonPlaceholder {
+  display: none;
+}
+
+:root {
+  --pm-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.2'/%3E%3Cpath d='M15.2 15.2L20.5 20.5'/%3E%3C/svg%3E");
+}
+
+// A moon by day (switch to evening) and a sun by evening. Drawn with a CSS
+// mask so the icon font never has to load.
+#quarto-header .quarto-color-scheme-toggle .bi {
+  display: inline-block;
+  width: 1.15rem;
+  height: 1.15rem;
+  background-color: currentColor;
+  -webkit-mask: var(--pm-scheme-icon) center / contain no-repeat;
+  mask: var(--pm-scheme-icon) center / contain no-repeat;
+}
+
+#quarto-header .quarto-color-scheme-toggle .bi::before {
+  content: none;
+}
+
+body.quarto-light {
+  --pm-scheme-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-width='1.6' stroke-linejoin='round' d='M19.5 14.6A7.9 7.9 0 0 1 9.4 4.5a7.9 7.9 0 1 0 10.1 10.1z'/%3E%3C/svg%3E");
+}
+
+body.quarto-dark {
+  --pm-scheme-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2.8v2.1M12 19.1v2.1M2.8 12h2.1M19.1 12h2.1M5.5 5.5l1.5 1.5M17 17l1.5 1.5M5.5 18.5L7 17M17 7l1.5-1.5'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 380px) {
+  .navbar-brand .navbar-title {
+    font-size: 1.3rem;
+  }
+  #quarto-header .navbar-nav .nav-link {
+    font-size: 1.05rem;
+    padding-inline: 0.4rem;
+  }
+}
+
+// ---------------------------------------------------------- page body
+
+#quarto-content {
+  padding-bottom: 2rem;
+}
+
+main.content {
+  padding-top: 0.5rem;
+}
+
+// Custom-layout pages (home, about, journal, 404) write their own <h1>. They
+// still set a title for the tab, link previews and search, and Quarto prints
+// that title in a header of its own, so hide it.
+.page-layout-custom > #title-block-header {
+  display: none;
+}
+
+// Custom-layout pages share one column system.
+// (Quarto pads every child of #quarto-content, so match its specificity.)
+#quarto-content > .pm-page {
+  max-width: calc(var(--pm-width) + 2 * var(--pm-gutter));
+  margin-inline: auto;
+  padding: clamp(1.75rem, 5vw, 3.25rem) var(--pm-gutter) 1rem;
+}
+
+.pm-prose {
+  max-width: 34rem;
+}
+
+.pm-prose > :first-child {
+  margin-top: 0;
+}
+
+.pm-kicker {
+  color: var(--pm-soft);
+  font-style: italic;
+  margin-bottom: 0.3rem;
+}
+
+// --------------------------------------------------------------- home
+
+.pm-home-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .pm-home-top {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  }
+}
+
+.pm-hello h1 {
+  margin: 0 0 1.1rem;
+  font-size: clamp(2.4rem, 1.6rem + 3.6vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
+
+.pm-hello p {
+  max-width: 30rem;
+}
+
+.pm-section {
+  margin-top: clamp(3rem, 8vw, 5rem);
+}
+
+.pm-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--pm-rule);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.pm-section-head h2 {
+  margin: 0;
+  font-size: 1.55rem;
+}
+
+.pm-section-head a {
+  white-space: nowrap;
+}
+
+// While there are no posts, the home page leaves the journal out.
+.pm-section:has(.pm-empty) {
+  display: none;
+}
+
+// ------------------------------------------------------- mirror toy
+
+.pm-mirror {
+  margin: 0;
+}
+
+.pm-mirror-stage {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--pm-shade);
+  cursor: pointer;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--pm-ink) 10%, transparent),
+    0 18px 40px -24px rgba(30, 20, 10, 0.55);
+}
+
+.pm-mirror-stage canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.pm-mirror-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.75rem;
+  color: var(--pm-soft);
+  font-size: 0.95rem;
+}
+
+.pm-mirror-controls label {
+  font-style: italic;
+  white-space: nowrap;
+  margin: 0;
+}
+
+// On the narrowest phones the label takes its own line above the slider.
+@media (max-width: 379.98px) {
+  .pm-mirror-controls {
+    flex-wrap: wrap;
+    row-gap: 0;
+  }
+  .pm-mirror-controls label {
+    flex-basis: 100%;
+  }
+}
+
+// A hairline track and a small gold bead, the same in every browser.
+.pm-mirror-controls input[type="range"] {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 1.5rem;
+  margin: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.pm-mirror-controls input[type="range"]::-webkit-slider-runnable-track {
+  height: 1px;
+  background: var(--pm-soft);
+}
+
+.pm-mirror-controls input[type="range"]::-moz-range-track {
+  height: 1px;
+  background: var(--pm-soft);
+}
+
+.pm-mirror-controls input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0.95rem;
+  height: 0.95rem;
+  margin-top: calc(-0.475rem + 0.5px);
+  border-radius: 50%;
+  background: var(--pm-sun);
+  border: 1px solid color-mix(in srgb, var(--pm-ink) 55%, var(--pm-sun));
+}
+
+.pm-mirror-controls input[type="range"]::-moz-range-thumb {
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 50%;
+  background: var(--pm-sun);
+  border: 1px solid color-mix(in srgb, var(--pm-ink) 55%, var(--pm-sun));
+}
+
+.pm-mirror-controls input[type="range"]:focus-visible {
+  outline: 2px solid var(--pm-link);
+  outline-offset: 2px;
+}
+
+.pm-mirror-again {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-right: -0.4rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--pm-soft);
+  cursor: pointer;
+}
+
+.pm-mirror-again:hover {
+  color: var(--pm-ink);
+}
+
+.pm-mirror-again svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pm-mirror figcaption {
+  margin-top: 0.6rem;
+  color: var(--pm-soft);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  font-style: italic;
+  max-width: 36rem;
+}
+
+// ------------------------------------------------------- post listing
+
+.pm-posts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pm-post {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--pm-rule);
+}
+
+@media (min-width: 640px) {
+  .pm-post {
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    column-gap: 1.5rem;
+  }
+  .pm-post-date {
+    padding-top: 0.12rem;
+  }
+}
+
+.pm-post-date {
+  color: var(--pm-soft);
+  font-size: 0.95rem;
+}
+
+.pm-post-text {
+  min-width: 0;
+}
+
+.pm-post-title {
+  font-weight: 700;
+  font-size: 1.15em;
+  line-height: 1.25;
+  color: var(--pm-ink);
+  text-decoration: none;
+}
+
+// The title's link covers the whole row; category links sit above it.
+.pm-post-title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.pm-post:hover .pm-post-title {
+  color: var(--pm-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.pm-post-desc {
+  display: block;
+  color: var(--pm-soft);
+  margin-top: 0.15rem;
+}
+
+.pm-post-cats {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--pm-soft);
+}
+
+.pm-post-cats a {
+  color: inherit;
+  text-decoration-color: var(--pm-rule);
+}
+
+.pm-post-cats a:hover {
+  color: var(--pm-link);
+  text-decoration-color: currentColor;
+}
+
+.pm-empty {
+  color: var(--pm-soft);
+  font-style: italic;
+  padding: 0.9rem 0;
+  margin: 0;
+  border-bottom: 1px solid var(--pm-rule);
+}
+
+.pm-filter {
+  color: var(--pm-soft);
+  font-style: italic;
+  margin: 0 0 0.25rem;
+}
+
+.pm-journal .pm-posts,
+.pm-journal .pm-empty {
+  border-top: 1px solid var(--pm-rule);
+}
+
+// Quarto's own "no matching items" line, shown when a category filter is
+// empty. Our template already says so when there are no posts at all.
+.quarto-listing .listing-no-matching {
+  color: var(--pm-soft);
+  font-style: italic;
+  padding: 0.9rem 0;
+}
+
+// Category list in the margin of the journal page.
+.quarto-listing-category-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--pm-ink);
+  margin-bottom: 0.35rem;
+}
+
+.quarto-listing-category .category {
+  color: var(--pm-soft);
+  font-size: 1rem;
+  padding: 0.12rem 0;
+  cursor: pointer;
+}
+
+.quarto-listing-category .category:hover,
+.quarto-listing-category .category.active {
+  color: var(--pm-ink);
+}
+
+.quarto-listing-category .category.active {
+  text-decoration: underline;
+  text-decoration-color: var(--pm-sun);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+}
+
+.quarto-listing-category .category-count {
+  color: var(--pm-soft);
+  font-variant-numeric: oldstyle-nums;
+}
+
+// ---------------------------------------------------------------- posts
+
+// Quarto lifts a post's <h1> into a header of its own; theme/title-block.html
+// adds the line under it.
+#title-block-header.quarto-title-block .title {
+  margin-bottom: 0.6rem;
+}
+
+.pm-title-block {
+  margin-bottom: 2rem;
+}
+
+.pm-title-block .subtitle {
+  font-size: 1.2em;
+  font-style: italic;
+  color: var(--pm-soft);
+  margin-bottom: 0.8rem;
+}
+
+.pm-byline {
+  color: var(--pm-soft);
+  margin: 0;
+}
+
+.pm-byline .pm-cats {
+  font-style: italic;
+}
+
+.pm-back {
+  margin-top: 3.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--pm-rule);
+  font-style: italic;
+}
+
+main blockquote,
+main .blockquote {
+  margin: 1.6rem 0;
+  padding: 0 0 0 1.2rem;
+  border-left: 2px solid var(--pm-sun);
+  color: var(--pm-ink);
+  font-size: 1em;
+  font-style: italic;
+}
+
+main blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+// Figures, photos and captions.
+.quarto-figure figcaption,
+figure figcaption,
+.figure-caption {
+  color: var(--pm-soft);
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.45;
+  margin-top: 0.6rem;
+}
+
+main img {
+  border-radius: 2px;
+}
+
+// Tables.
+figure.quarto-float-tbl figcaption.quarto-float-caption-top,
+figure.quarto-float-tbl figcaption.quarto-float-caption-bottom,
+caption,
+.table-caption {
+  text-align: left;
+  color: var(--pm-soft);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+main table {
+  border-color: var(--pm-rule);
+}
+
+main .table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--pm-ink);
+  --bs-table-border-color: var(--pm-rule);
+}
+
+main .table > thead {
+  border-bottom: 1px solid var(--pm-soft);
+}
+
+// Code.
+pre,
+code,
+kbd {
+  font-variant-ligatures: none;
+}
+
+div.sourceCode,
+pre.sourceCode {
+  background: var(--pm-wash);
+  border: 0;
+  border-radius: 4px;
+}
+
+div.sourceCode pre {
+  padding: 0.8rem 1rem;
+}
+
+code {
+  font-size: 0.82em;
+}
+
+p code:not(.sourceCode),
+li code:not(.sourceCode),
+td code:not(.sourceCode) {
+  background: var(--pm-wash);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  overflow-wrap: anywhere;
+}
+
+.code-copy-button {
+  color: var(--pm-soft);
+}
+
+details.code-fold > summary,
+.code-fold summary {
+  color: var(--pm-soft);
+  font-style: italic;
+}
+
+// Math sits a little larger so it matches Alegreya's small x-height.
+mjx-container[jax="CHTML"] {
+  font-size: 106% !important;
+}
+
+// Callouts, quieter than Quarto's defaults.
+.callout {
+  border: 0 !important;
+  border-left: 2px solid var(--pm-rule) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding-left: 1rem;
+}
+
+.callout .callout-header {
+  background: transparent !important;
+  border: 0 !important;
+  padding-left: 0 !important;
+}
+
+.callout .callout-title-container {
+  font-weight: 700;
+  color: var(--pm-ink);
+}
+
+.callout .callout-body-container,
+.callout .callout-body {
+  font-size: 0.95em;
+}
+
+
+.callout-tip,
+.callout-note {
+  border-left-color: var(--pm-link) !important;
+}
+
+.callout-warning,
+.callout-important,
+.callout-caution {
+  border-left-color: var(--pm-flower) !important;
+}
+
+// Sidenotes and the table of contents live in the right margin.
+.column-margin,
+.margin-aside,
+aside {
+  color: var(--pm-soft);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+#TOC,
+#quarto-margin-sidebar {
+  font-size: 0.95rem;
+}
+
+#TOC h2,
+#toc-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--pm-ink);
+  border: 0;
+}
+
+#TOC .nav-link,
+.sidebar nav[role="doc-toc"] ul > li > a {
+  color: var(--pm-soft);
+  border-left-color: var(--pm-rule);
+}
+
+#TOC .nav-link.active,
+.sidebar nav[role="doc-toc"] ul > li > a.active {
+  color: var(--pm-ink);
+  border-left-color: var(--pm-sun);
+}
+
+.footnotes {
+  font-size: 0.92rem;
+  color: var(--pm-soft);
+}
+
+.footnotes hr {
+  margin: 2rem 0 1rem;
+}
+
+// Anchors that appear beside headings on hover.
+.anchorjs-link {
+  color: var(--pm-soft) !important;
+}
+
+// ---------------------------------------------------------------- footer
+
+body .footer .nav-footer {
+  border-top: 0;
+  max-width: calc(var(--pm-width) + 2 * var(--pm-gutter));
+  margin-inline: auto;
+  padding: 0 var(--pm-gutter) 2.25rem;
+  color: var(--pm-soft);
+  font-size: 1rem;
+  align-items: baseline;
+  min-height: 0;
+}
+
+.footer {
+  background: var(--pm-paper);
+  border: 0;
+  padding: 0;
+}
+
+// The rule above the footer spans the text column, not the window.
+.footer .nav-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0 var(--pm-gutter) auto;
+  border-top: 1px solid var(--pm-rule);
+}
+
+body .footer .nav-footer {
+  position: relative;
+  padding-top: 1.25rem;
+}
+
+.nav-footer p {
+  margin: 0;
+}
+
+.nav-footer a,
+body .footer .nav-footer .nav-link {
+  color: var(--pm-soft);
+  padding: 0 0 0 1rem;
+}
+
+.nav-footer .footer-items .nav-item:first-child .nav-link {
+  padding-left: 0;
+}
+
+.nav-footer a:hover,
+.nav-footer .nav-link:hover {
+  color: var(--pm-ink);
+}
+
+.nav-footer-center {
+  display: none;
+}
+
+@media (max-width: 575.98px) {
+  .nav-footer {
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: left;
+    align-items: flex-start;
+  }
+  .nav-footer-left,
+  .nav-footer-right {
+    text-align: left;
+    justify-content: flex-start;
+    margin: 0;
+  }
+  .nav-footer-right .footer-items {
+    justify-content: flex-start;
+  }
+}
+
+#quarto-back-to-top {
+  display: none !important;
+}
+
+// ------------------------------------------------------------------ about
+
+.pm-people {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .pm-people {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 4rem;
+  }
+}
+
+.pm-person h2 {
+  margin-top: 0;
+  font-size: 1.55rem;
+}
+
+.pm-goose {
+  margin: clamp(2.5rem, 7vw, 4rem) 0 0;
+}
+
+body.quarto-dark .pm-goose img,
+body.quarto-dark main img {
+  filter: brightness(0.9);
+}
+
+.pm-goose img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(40, 30, 20, 0.08), 0 10px 30px -12px rgba(40, 30, 20, 0.3);
+}
+
+.pm-colophon {
+  margin-top: clamp(3rem, 8vw, 4.5rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--pm-rule);
+}
+
+.pm-colophon h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.pm-colophon p {
+  color: var(--pm-soft);
+  max-width: 34rem;
+}
+
+// -------------------------------------------------------------------- 404
+
+.pm-lost {
+  max-width: 34rem;
+}
+
+.pm-lost svg {
+  display: block;
+  width: min(100%, 22rem);
+  height: auto;
+  color: var(--pm-ink);
+  margin: 0 0 1.5rem;
+}
+
+// ---------------------------------------------------------------- search
+
+.aa-DetachedOverlay,
+.aa-DetachedContainer {
+  font-family: inherit;
+}
+
+.aa-DetachedContainer,
+.aa-DetachedContainer .aa-Panel,
+.aa-DetachedFormContainer {
+  background: var(--pm-paper) !important;
+  color: var(--pm-ink);
+  border-color: var(--pm-rule) !important;
+}
+
+.aa-DetachedContainer .aa-Form {
+  background: var(--pm-paper) !important;
+  border: 1px solid var(--pm-rule) !important;
+  box-shadow: none !important;
+}
+
+.aa-DetachedContainer .aa-Form:focus-within {
+  border-color: var(--pm-soft) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--pm-sun) 35%, transparent) !important;
+}
+
+.aa-DetachedContainer .aa-Input,
+.aa-DetachedCancelButton {
+  color: var(--pm-ink) !important;
+  font-family: inherit;
+}
+
+.aa-DetachedContainer .search-result-header,
+.aa-DetachedContainer .aa-SourceHeader {
+  background: transparent !important;
+  color: var(--pm-soft) !important;
+  font-style: italic;
+  border-color: var(--pm-rule) !important;
+}
+
+.aa-DetachedContainer .aa-Item[aria-selected="true"],
+.aa-DetachedContainer .aa-Item[aria-selected="true"] .search-item,
+.aa-DetachedOverlay li.aa-Item[aria-selected="true"] .search-item .search-result-title-container,
+.aa-DetachedOverlay li.aa-Item[aria-selected="true"] .search-item .search-result-text-container,
+.aa-DetachedOverlay li.aa-Item[aria-selected="true"] .search-item .search-result-section,
+.aa-DetachedOverlay li.aa-Item[aria-selected="true"] .search-item .search-result-text {
+  background-color: var(--pm-wash) !important;
+}
+
+.aa-DetachedContainer .aa-Item .search-result-title,
+.aa-DetachedContainer .aa-Item .search-result-section,
+.aa-DetachedContainer .aa-Item[aria-selected="true"] .search-result-title,
+.aa-DetachedContainer .aa-Item[aria-selected="true"] .search-result-section,
+.aa-DetachedContainer .aa-Item[aria-selected="true"] .search-result-icon {
+  color: var(--pm-ink) !important;
+}
+
+.aa-DetachedContainer .aa-Item .search-result-text,
+.aa-DetachedContainer .aa-Item[aria-selected="true"] .search-result-text {
+  color: var(--pm-soft) !important;
+}
+
+.aa-DetachedContainer .search-result-title {
+  font-weight: 700;
+}
+
+.aa-DetachedContainer mark.search-match,
+.aa-DetachedContainer .aa-Item[aria-selected="true"] mark.search-match {
+  background: color-mix(in srgb, var(--pm-sun) 38%, transparent) !important;
+  color: inherit !important;
+  padding: 0 0.1em;
+}
+
+.aa-DetachedContainer .search-result-icon {
+  color: var(--pm-soft) !important;
+}
+
+// ------------------------------------------------------------ motion
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

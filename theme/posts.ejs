@@ -1,0 +1,37 @@
+<% /*
+  The list of journal posts, used on the home page and the journal page.
+  Quarto's list.js filters these <li>s by category, so each carries the
+  attributes metadataAttrs() writes. With no posts there is no <ul class="list">
+  at all, which tells list.js to stay out of the way.
+
+  The title's link covers the whole row (see .pm-post in theme/site.scss), and
+  each category links to the journal filtered to it. Quarto reads a template's
+  output as Markdown, so the HTML goes in a raw block to keep its shape.
+*/ %>
+<%
+  // Markdown would curl quotes; raw HTML does not, so curl them here.
+  const esc = (text) => String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const curl = (text) => esc(text)
+    .replace(/(^|[\s(\[])'/g, "$1\u2018").replace(/'/g, "\u2019")
+    .replace(/(^|[\s(\[])"/g, "$1\u201c").replace(/"/g, "\u201d");
+%>
+```{=html}
+<% if (items.length === 0) { %>
+<p class="pm-empty">Nothing posted yet.</p>
+<% } else { %>
+<ul class="list pm-posts">
+<% for (const item of items) { %>
+<li class="pm-post" <%= metadataAttrs(item) %>>
+<span class="pm-post-date"><%= item.date %></span>
+<span class="pm-post-text">
+<a class="pm-post-title" href="<%- item.path %>"><%- curl(item.title) %></a>
+<% if (item.description) { %><span class="pm-post-desc"><%- curl(item.description) %></span><% } %>
+<% if (templateParams && templateParams["show-categories"] && item.categories) { %>
+<span class="pm-post-cats"><% item.categories.forEach((category, i) => { %><%= i ? ", " : "" %><a href="/blog.html#category=<%- encodeURIComponent(category) %>"><%= category %></a><% }) %></span>
+<% } %>
+</span>
+</li>
+<% } %>
+</ul>
+<% } %>
+```

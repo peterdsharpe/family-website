@@ -1,0 +1,108 @@
+/*-- scss:defaults --*/
+
+// Evening: the same paper by lamplight.
+$pm-paper: #1b1915;
+$pm-wash: #25221d;
+$pm-ink: #ece4d4;
+$pm-soft: #b3a894;
+$pm-rule: #3a352d;
+$pm-link: #a8c98a;
+$pm-link-hover: #c6deae;
+$pm-sun: #f0b955;
+$pm-flower: #e58a72;
+
+$body-bg: $pm-paper;
+$body-color: $pm-ink;
+$primary: $pm-link;
+$link-color: $pm-link;
+$text-muted: $pm-soft;
+$border-color: $pm-rule;
+$navbar-bg: $pm-paper;
+$navbar-fg: $pm-soft;
+$navbar-hl: $pm-ink;
+$footer-bg: $pm-paper;
+$footer-fg: $pm-soft;
+$code-block-bg: $pm-wash;
+$code-color: #e6b98f;
+$toc-color: $pm-soft;
+
+/*-- scss:rules --*/
+
+:root {
+  --pm-paper: #{$pm-paper};
+  --pm-wash: #{$pm-wash};
+  --pm-ink: #{$pm-ink};
+  --pm-soft: #{$pm-soft};
+  --pm-rule: #{$pm-rule};
+  --pm-link: #{$pm-link};
+  --pm-link-hover: #{$pm-link-hover};
+  --pm-sun: #{$pm-sun};
+  --pm-flower: #{$pm-flower};
+  // The mirror on the home page reads these: the wall in shade, a little
+  // daylight in its middle, and the colours of the reflected sunlight.
+  --pm-shade: #110f0c;
+  --pm-glow: #201a14;
+  --pm-light: #ffeec4;
+  --pm-halo: #ffb94a;
+  color-scheme: dark;
+}
+
+// Code colours: gruvbox's hues, adjusted so every token reaches 4.5:1 on
+// the code background (WCAG AA).
+code span.kw,
+code span.cf,
+code span.al,
+code span.er {
+  color: #fb523e;
+}
+
+code span.dt,
+code span.at {
+  color: #fabd2f;
+}
+
+code span.dv,
+code span.bn,
+code span.fl,
+code span.cn,
+code span.ch,
+code span.sc {
+  color: #d3869b;
+}
+
+code span.st,
+code span.vs,
+code span.ss {
+  color: #b8bb26;
+}
+
+code span.co,
+code span.do,
+code span.an,
+code span.cv,
+code span.in,
+code span.wa,
+code span.re {
+  color: #a89984;
+  font-style: italic;
+}
+
+code span.fu,
+code span.im,
+code span.ex {
+  color: #8ec07c;
+}
+
+code span.bu,
+code span.pp {
+  color: #fe8019;
+}
+
+code span.va {
+  color: #83a598;
+}
+
+code span.op,
+code span.ot {
+  color: #ebdbb2;
+}

@@ -1,38 +1,57 @@
-# PeteMart family website
+# PeteMart
 
-The source for [petem.art](https://petem.art), built with Quarto.
+The source for [petem.art](https://petem.art), Peter and Marta's family website, built with [Quarto](https://quarto.org).
 
-## Local preview
-
-```bash
-quarto preview
-```
-
-## Render
+## Preview and build
 
 ```bash
-quarto render
+quarto preview                    # live preview while you edit
+quarto render                     # build the public site into _site/
+quarto render --profile drafts    # build with drafts listed, into _site-drafts/
 ```
 
-Rendered output is written to `_site/` and is intentionally excluded from the
-`main` branch. The public artifact is committed separately on `gh-pages`.
+`_site/` and `_site-drafts/` are not committed. GitHub Pages serves the `gh-pages` branch, which holds only the built site:
 
-## Write a journal entry
+```bash
+_tools/deploy.sh                  # render, then commit _site/ to gh-pages
+git push origin gh-pages          # publish
+```
 
-Create a folder under `posts/` containing an `index.qmd` file. Start with:
+## Write a journal post
+
+Make a folder under `posts/` with an `index.qmd` in it:
 
 ```yaml
 ---
-title: "A useful title"
-description: "One sentence for listing cards and search results."
-author: "Peter and Marta"
-date: "2026-09-04"
-categories: [projects, notes]
+title: "A plain title"
+description: "One sentence for the list of posts and for link previews."
+author: "Peter"
+date: "2026-10-16"
+categories: [projects]
 draft: true
 ---
 ```
 
-Posts support LaTeX math, syntax-highlighted code, figures, citations, and
-executable Python cells. Computational output is frozen by default: render the
-individual post locally to refresh its output, commit the generated `_freeze/`
-files, and remove `draft: true` when the entry is ready for the public site.
+A post can have LaTeX math, highlighted code, figures, footnotes (they appear in the margin on wide screens), and Python cells. Computed output is frozen: render the post on its own to refresh it, and commit the `_freeze/` files it makes. Remove `draft: true` when the post is ready to go out.
+
+`posts/formatting-test/` is a draft with one of everything, for checking how the styles look. It is never published.
+
+## Where things are
+
+| Path | What it holds |
+|---|---|
+| `index.qmd`, `about.qmd`, `blog.qmd`, `404.qmd` | The pages. `blog.qmd` is the journal. |
+| `theme/light.scss`, `theme/dark.scss` | The colours for day and evening. |
+| `theme/site.scss` | Type, layout and every other style. |
+| `theme/fonts/` | Alegreya, under the SIL Open Font License. |
+| `theme/posts.ejs` | The list of posts on the home and journal pages. |
+| `theme/title-block.html`, `theme/back-link.lua` | The top and bottom of each post. |
+| `assets/mirror.js` | The mirror on the home page. |
+| `_tools/mirror_points.py` | Makes `assets/mirror-points.js`, the mirror's data. |
+| `_tools/deploy.sh` | Builds the site onto the `gh-pages` branch. |
+
+To change what the mirror spells, edit `WORD` in `_tools/mirror_points.py` and run
+
+```bash
+uv run --with Hershey-Fonts --with numpy --with scipy python _tools/mirror_points.py
+```

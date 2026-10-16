@@ -1,30 +1,49 @@
 ---
 title: "Journal"
-description: "Notes, projects, field reports, and other things Peter and Marta want to remember."
-page-layout: full
-body-classes: journal-page
+title-block-style: none
+description: "Posts by Peter and Marta, newest first."
+page-layout: custom
+html-math-method: plain
 listing:
+  id: posts
   contents: posts
-  type: grid
   sort: "date desc"
-  categories: true
-  filter-ui: true
-  sort-ui: true
-  page-size: 12
+  type: custom
+  template: theme/posts.ejs
+  date-format: "MMM D, YYYY"
+  template-params:
+    show-categories: true
   feed:
     type: full
-    title: "The PeteMart Journal"
+    title: "PeteMart"
 ---
 
-::: {.journal-deck}
-Part laboratory notebook, part family scrapbook. Search the whole site from the navigation bar, or use the filters below to explore the journal.
+::: {.pm-page .pm-journal role="main"}
+
+::: {.pm-prose}
+# Journal
+
+Posts by Peter and Marta, newest first. There's an [RSS feed](blog.xml) too.
 :::
 
 ```{=html}
-<div class="journal-empty-state" data-journal-empty hidden>
-  <span aria-hidden="true">✦</span>
-  <h2>The shelves are ready.</h2>
-  <p>Our first public entry is still being polished. Soon this will fill up with notes, projects, places, and other things worth keeping.</p>
-</div>
-<script src="assets/journal.js" defer></script>
+<p class="pm-filter" hidden>Posts filed under <span data-category></span>. <a href="blog.html">Show all posts</a></p>
+<script>
+  // Quarto filters the list when the address ends in #category=...; say so.
+  (() => {
+    const note = document.querySelector(".pm-filter");
+    const show = () => {
+      const match = location.hash.match(/category=([^&]*)/);
+      note.hidden = !match;
+      if (match) note.querySelector("[data-category]").textContent = decodeURIComponent(match[1]);
+    };
+    addEventListener("hashchange", show);
+    show();
+  })();
+</script>
 ```
+
+::: {#posts}
+:::
+
+:::

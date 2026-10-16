@@ -46,12 +46,4 @@ A post can have LaTeX math, highlighted code, figures, footnotes (they appear in
 | `theme/fonts/` | Alegreya, under the SIL Open Font License. |
 | `theme/posts.ejs` | The list of posts on the home and journal pages. |
 | `theme/title-block.html`, `theme/back-link.lua` | The top and bottom of each post. |
-| `assets/mirror.js` | The mirror on the home page. |
-| `_tools/mirror_points.py` | Makes `assets/mirror-points.js`, the mirror's data. |
 | `_tools/deploy.sh` | Builds the site onto the `gh-pages` branch. |
-
-To change what the mirror spells, edit `WORD` in `_tools/mirror_points.py` and run
-
-```bash
-uv run --with Hershey-Fonts --with numpy --with scipy python _tools/mirror_points.py
-```

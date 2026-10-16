@@ -82,8 +82,7 @@ main li {
 
 main .subtitle,
 main figcaption,
-.pm-post-desc,
-.pm-mirror figcaption {
+.pm-post-desc {
   hyphens: manual;
 }
 
@@ -370,17 +369,10 @@ main.content {
 
 // --------------------------------------------------------------- home
 
-.pm-home-top {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
-}
-
-@media (min-width: 900px) {
-  .pm-home-top {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
-  }
+// The home page reads like a letter: one column, starting at the same left
+// edge as the name in the navbar.
+.pm-home > * {
+  max-width: 46rem;
 }
 
 .pm-hello h1 {
@@ -420,142 +412,6 @@ main.content {
 // While there are no posts, the home page leaves the journal out.
 .pm-section:has(.pm-empty) {
   display: none;
-}
-
-// ------------------------------------------------------- mirror toy
-
-.pm-mirror {
-  margin: 0;
-}
-
-.pm-mirror-stage {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  border-radius: 3px;
-  overflow: hidden;
-  background: var(--pm-shade);
-  cursor: pointer;
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--pm-ink) 10%, transparent),
-    0 18px 40px -24px rgba(30, 20, 10, 0.55);
-}
-
-.pm-mirror-stage canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.pm-mirror-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-top: 0.75rem;
-  color: var(--pm-soft);
-  font-size: 0.95rem;
-}
-
-.pm-mirror-controls label {
-  font-style: italic;
-  white-space: nowrap;
-  margin: 0;
-}
-
-// On the narrowest phones the label takes its own line above the slider.
-@media (max-width: 379.98px) {
-  .pm-mirror-controls {
-    flex-wrap: wrap;
-    row-gap: 0;
-  }
-  .pm-mirror-controls label {
-    flex-basis: 100%;
-  }
-}
-
-// A hairline track and a small gold bead, the same in every browser.
-.pm-mirror-controls input[type="range"] {
-  flex: 1 1 auto;
-  min-width: 0;
-  height: 1.5rem;
-  margin: 0;
-  background: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-}
-
-.pm-mirror-controls input[type="range"]::-webkit-slider-runnable-track {
-  height: 1px;
-  background: var(--pm-soft);
-}
-
-.pm-mirror-controls input[type="range"]::-moz-range-track {
-  height: 1px;
-  background: var(--pm-soft);
-}
-
-.pm-mirror-controls input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 0.95rem;
-  height: 0.95rem;
-  margin-top: calc(-0.475rem + 0.5px);
-  border-radius: 50%;
-  background: var(--pm-sun);
-  border: 1px solid color-mix(in srgb, var(--pm-ink) 55%, var(--pm-sun));
-}
-
-.pm-mirror-controls input[type="range"]::-moz-range-thumb {
-  width: 0.95rem;
-  height: 0.95rem;
-  border-radius: 50%;
-  background: var(--pm-sun);
-  border: 1px solid color-mix(in srgb, var(--pm-ink) 55%, var(--pm-sun));
-}
-
-.pm-mirror-controls input[type="range"]:focus-visible {
-  outline: 2px solid var(--pm-link);
-  outline-offset: 2px;
-}
-
-.pm-mirror-again {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  margin-right: -0.4rem;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--pm-soft);
-  cursor: pointer;
-}
-
-.pm-mirror-again:hover {
-  color: var(--pm-ink);
-}
-
-.pm-mirror-again svg {
-  width: 1.15rem;
-  height: 1.15rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.pm-mirror figcaption {
-  margin-top: 0.6rem;
-  color: var(--pm-soft);
-  font-size: 0.95rem;
-  line-height: 1.45;
-  font-style: italic;
-  max-width: 36rem;
 }
 
 // ------------------------------------------------------- post listing

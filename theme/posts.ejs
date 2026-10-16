@@ -7,6 +7,8 @@
   The title's link covers the whole row (see .pm-post in theme/site.scss), and
   each category links to the journal filtered to it. Quarto reads a template's
   output as Markdown, so the HTML goes in a raw block to keep its shape.
+  These are lodash templates: the tag with = writes a value as it is, and
+  the tag with - escapes it for HTML.
 */ %>
 <%
   // Markdown would curl quotes; raw HTML does not, so curl them here.
@@ -14,6 +16,9 @@
   const curl = (text) => esc(text)
     .replace(/(^|[\s(\[])'/g, "$1\u2018").replace(/'/g, "\u2019")
     .replace(/(^|[\s(\[])"/g, "$1\u201c").replace(/"/g, "\u201d");
+  // A post without a description gets a placeholder comment here, which
+  // Quarto swaps for the post's opening words after rendering; pass it as is.
+  const describe = (text) => /^<!-- desc\(/.test(text) ? text : curl(text);
 %>
 ```{=html}
 <% if (items.length === 0) { %>
@@ -24,10 +29,10 @@
 <li class="pm-post" <%= metadataAttrs(item) %>>
 <span class="pm-post-date"><%= item.date %></span>
 <span class="pm-post-text">
-<a class="pm-post-title" href="<%- item.path %>"><%- curl(item.title) %></a>
-<% if (item.description) { %><span class="pm-post-desc"><%- curl(item.description) %></span><% } %>
+<a class="pm-post-title" href="<%- item.path %>"><%= curl(item.title) %></a>
+<% if (item.description) { %><span class="pm-post-desc"><%= describe(item.description) %></span><% } %>
 <% if (templateParams && templateParams["show-categories"] && item.categories) { %>
-<span class="pm-post-cats"><% item.categories.forEach((category, i) => { %><%= i ? ", " : "" %><a href="/blog.html#category=<%- encodeURIComponent(category) %>"><%= category %></a><% }) %></span>
+<span class="pm-post-cats"><% item.categories.forEach((category, i) => { %><%= i ? ", " : "" %><a href="/blog.html#category=<%- encodeURIComponent(category) %>"><%- category %></a><% }) %></span>
 <% } %>
 </span>
 </li>

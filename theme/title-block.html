@@ -10,8 +10,8 @@ $if(subtitle)$
 $elseif(description)$
 <p class="subtitle">$description$</p>
 $endif$
-<p class="pm-byline">
+<div class="pm-byline">
 $if(date)$<time class="date">$date$</time>$endif$$if(by-author)$ · $for(by-author)$$by-author.name.literal$$sep$ and $endfor$$endif$$if(categories)$ · <span class="pm-cats">$for(categories)$$categories$$sep$, $endfor$</span>$endif$
-</p>
+</div>
 </div>
 </div>

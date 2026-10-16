@@ -16,37 +16,12 @@ listing:
 
 ::: {.pm-page .pm-home role="main"}
 
-::: {.pm-home-top}
-
 ::: {.pm-hello}
 # Hi, we're Peter and Marta.
 
 We live in Somerville, Massachusetts. Our friends call the two of us PeteMart, which is how this site ended up at petem.art.
 
 We'll post things we've made and places we've been, and now and then something with equations in it.
-:::
-
-```{=html}
-<figure class="pm-mirror" data-mirror>
-  <div class="pm-mirror-stage" role="img"
-       aria-label="Sunlight from 294 small mirrors. It leaves the mirrors as a hexagon and lands on the ground spelling hello in cursive.">
-    <canvas></canvas>
-  </div>
-  <div class="pm-mirror-controls">
-    <label for="pm-mirror-distance">Distance from the mirror</label>
-    <input id="pm-mirror-distance" type="range" min="0" max="1.4" step="0.01" value="0">
-    <button type="button" class="pm-mirror-again" title="Send the light again" aria-label="Send the light again">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.2 12.6A7.3 7.3 0 1 1 16.9 6.8"/><path d="M17.6 2.9v4.6h-4.6"/></svg>
-    </button>
-  </div>
-  <figcaption>
-    Peter once made Marta <a href="https://github.com/peterdsharpe/mirror-array">a mirror array</a>: 294 small triangular mirrors in a hexagon, each tilted so that its patch of sunlight lands in a different place.
-    Held at the right height above the ground, the patches spell out a message. This copy says hello.
-  </figcaption>
-</figure>
-<script type="module" src="assets/mirror.js"></script>
-```
-
 :::
 
 ::: {.pm-section}
